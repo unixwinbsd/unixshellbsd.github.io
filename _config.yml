@@ -1,0 +1,47 @@
+lang: en
+encoding: utf-8
+
+title: "UnixBSDShell"
+description: "A Blog That Focuses On UNIX Systems, Such As FreeBSD OpenBSD NetBSD and Others"
+email: datainchi@gmail.com
+
+author: "Iwan Setiawan"
+domain: unixwinbsd.github.io
+#baseurl: "/unixbsdshell"
+baseurl: "https://unixwinbsd.github.io/"
+url: https://unixwinbsd.github.io
+github_username: unixwinbsd
+
+# Site settings
+#permalink: /:title/
+permalink: pretty
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  auto_ids: true
+paginate: 5
+paginate_path: "/:num/"
+date_format: "%b %-d, %Y"
+
+disqus:
+  shortname: dfederm
+  
+google_analytics: G-YV6984LBD2
+google_ads: ca-pub-7807152857287265
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - github-pages
+  - jekyll-compose
+  - jekyll-redirect-from
+  - jekyll-coffeescript
+  - jekyll-default-layout
+  - jekyll-gist 
+  - jekyll-github-metadata
+  - jekyll-optional-front-matter
+  - jekyll-readme-index
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
