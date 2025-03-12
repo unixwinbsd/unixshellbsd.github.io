@@ -8,7 +8,7 @@ email: datainchi@gmail.com
 author: "Iwan Setiawan"
 domain: unixwinbsd.github.io
 #baseurl: "/unixbsdshell"
-baseurl: "https://unixwinbsd.github.io/"
+baseurl: ""
 url: https://unixwinbsd.github.io
 github_username: unixwinbsd
 
