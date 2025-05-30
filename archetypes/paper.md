@@ -1,7 +1,7 @@
 ---
 title: "Paper Title (less than 70 characters)" 
 date: 2012-06-01
-url: /paper/
+url: /database/
 aliases: 
     - /old_url.html
 tags: ["keyword 1","keyword 2","keyword 3","keyword 4","keyword 5","keyword 6","keyword 7","keyword 8"]
