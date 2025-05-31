@@ -1,5 +1,5 @@
 ---
-title: "Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD 14"
+title: "Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD"
 date: 2025-05-24T07:27:45+08:00
 tags: ["DataBase"]
 categories: ["FreeBSD"]
