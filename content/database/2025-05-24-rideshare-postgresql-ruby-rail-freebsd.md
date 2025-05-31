@@ -55,10 +55,10 @@ $ exit
 root@ns3:~ #
 ```
 Perintah di atas digunakan untuk membuat database Rideshare dengan kondisi berikut:
-user: `userrideshare`
-database: `rideshare`
-host: `localhost`
-password: `router123`
+- user: `userrideshare`
+- database: `rideshare`
+- host: `localhost`
+- password: `router123`
 
 ## 2. Instal Ruby on Rails
 Untuk menginstal lingkungan Ruby on Rails, Anda harus menginstal Ruby di komputer FreeBSD Anda. Perlu Anda ketahui, di FreeBSD terdapat banyak versi Ruby yang akan terinstal secara otomatis, untuk mengatasinya, Anda harus menentukan versi Ruby yang akan digunakan di komputer FreeBSD. Tambahkan skrip di bawah ini ke dalam file `/etc/make.conf`.
