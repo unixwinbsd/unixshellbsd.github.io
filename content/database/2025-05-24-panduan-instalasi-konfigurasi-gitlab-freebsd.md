@@ -1,5 +1,5 @@
 ---
-title: "Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD 14"
+title: "Panduan Instalasi dan Konfigurasi GitLab Di FreeBSD"
 date: 2025-05-24T11:15:15+08:00
 tags: ["DataBase"]
 categories: ["FreeBSD"]
