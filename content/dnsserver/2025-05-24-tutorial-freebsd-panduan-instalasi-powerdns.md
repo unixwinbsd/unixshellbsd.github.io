@@ -1,6 +1,6 @@
 ---
 title: "Tutorial FreeBSD - Panduan Instalasi PowerDNS"
-date: 2025-05-23T08:57:45+08:00
+date: 2025-05-24T08:57:45+08:00
 tags: ["DNSServer"]
 categories: ["FreeBSD"]
 author: "Iwan Setiawan"
