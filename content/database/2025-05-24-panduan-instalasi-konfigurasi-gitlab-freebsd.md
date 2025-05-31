@@ -20,7 +20,7 @@ Alat-alat seperti Git memungkinkan para pengembang untuk melakukan perubahan pad
 Untuk dapat menggunakan Git, saat ini tersedia berbagai layanan untuk menyimpan dan membagikan kode tersebut. Misalnya, GitLab, GitHub, Bitbucket, dan Gitorous. Di antara pilihan tersebut, GitLab merupakan salah satu layanan penyimpanan Git yang sedang naik daun dan memiliki banyak pengguna.
 
 Git adalah sistem pembuatan versi kode sumber yang memungkinkan Anda melacak perubahan secara lokal dan mengirim atau menarik perubahan dari sumber daya jarak jauh.
-
+<br><br/>
 
 ![proses instalasi gitlab di freebsd](https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/Proses%20Install%20Gitlab%20di%20FreeBSD.jpg)
 
