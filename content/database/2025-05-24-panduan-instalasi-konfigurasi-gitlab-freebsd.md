@@ -23,7 +23,7 @@ Git adalah sistem pembuatan versi kode sumber yang memungkinkan Anda melacak per
 <br><br/>
 
 ![proses instalasi gitlab di freebsd](https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/Proses%20Install%20Gitlab%20di%20FreeBSD.jpg)
-
+<br><br/>
 
 GitLab adalah layanan mirip github yang dapat digunakan organisasi untuk menyediakan manajemen internal repositori git. Ini adalah sistem manajemen repositori Git yang dihosting sendiri yang menjaga kode pengguna tetap pribadi dan dapat dengan mudah menerapkan perubahan kode.
 Berikut ini adalah beberapa keuntungan menggunakan Gitlab:
@@ -43,7 +43,7 @@ root@ns3:/usr/ports/databases/postgresql15-client # make install clean
 root@ns3:/usr/ports/databases/postgresql15-client # cd /usr/ports/databases/postgresql15-server
 root@ns3:/usr/ports/databases/postgresql15-server # make install clean
 ```
-In this article, we do not fully explain how to install and use PostgreSQL, you can read the previous article "Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD"
+In this article, we do not fully explain how to install and use PostgreSQL, you can read the previous article "[Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD](https://unixwinbsd.github.io/database/2025-05-07-howto-install-and-configure-postgresql-freebsd/)"
 
 
 ## 2. Membuat PostgreSQL
