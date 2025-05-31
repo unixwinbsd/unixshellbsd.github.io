@@ -33,7 +33,7 @@ PostgreSQL juga memungkinkan pengguna untuk menambahkan milik mereka sendiri:
 
 PostgreSQL awalnya bernama POSTGRES, merujuk pada asal-usulnya sebagai penerus basis data Ingres. Program PostgreSQL juga dapat digunakan sebagai penyimpanan data utama atau gudang data untuk banyak aplikasi web, seluler, geospasial, dan analitis. PostgreSQL dapat menyimpan data terstruktur dan tidak terstruktur dalam satu produk.
 
-Dalam artikel ini kami mencoba menginstal PostgreSQL pada server FreeBSD 13.2. Versi PostgreSQL yang digunakan adalah postgresql15.
+Dalam artikel ini kami mencoba menginstal PostgreSQL pada server FreeBSD. Versi PostgreSQL yang digunakan adalah postgresql15.
 
 
 ![Arsitektur database PostgreSQL](https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/Arsitektur%20database%20PostgreSQL.jpg)
