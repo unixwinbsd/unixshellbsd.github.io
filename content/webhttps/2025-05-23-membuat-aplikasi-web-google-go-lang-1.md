@@ -35,7 +35,7 @@ Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis memb
 - Port GoLang Web: 8999
 
 
-## 2. Create Simple Web Applications
+## 2. Membuat Aplikasi Wwb Sederhana
 
 Langkah pertama untuk memulai Go adalah menginstalnya di komputer server kita. Untuk proses instalasi Go, Anda dapat membaca artikel kami sebelumnya: "How to Install GOLANG GO Language on FreeBSD". Anda dapat mempraktikkan semua konten artikel ini pada mesin server Linux seperti Ubuntu, Debian dan lainnya, serta dapat juga diterapkan pada sistem operasi Windows dan MacOS.
 
