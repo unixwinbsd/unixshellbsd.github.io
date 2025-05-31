@@ -67,17 +67,17 @@ Untuk menginstal lingkungan Ruby on Rails, Anda harus menginstal Ruby di kompute
 root@ns3:~ # ee /etc/make.conf
 DEFAULT_VERSIONS+=ruby=3.1
 ```
-Setelah Anda menentukan versi Ruby yang akan digunakan, yaitu Ruby31, jalankan proses instalasi Ruby.
+Setelah Anda menentukan versi Ruby yang akan digunakan, yaitu Ruby31, langsung jalankan proses instalasi Ruby.
 
 ```console
 root@ns3:~ # pkg install ruby
 ```
-Setelah itu, Anda menginstal bundler dan Gems.
+Setelah itu, lanjutkan dengan menginstal bundler dan Gems.
 
 ```console
 root@ns3:~ # pkg install rubygem-bundler ruby31-gems
 ```
-Anda juga menginstal Rails, untuk menjalankan aplikasi Ruby.
+Anda juga dapat menginstal Rails untuk menjalankan aplikasi Ruby.
 
 ```console
 root@ns3:~ # pkg install rubygem-rails60
