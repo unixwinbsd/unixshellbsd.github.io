@@ -30,10 +30,10 @@ Dalam tutorial yang kami tulis ini, kita akan melihat cara menyiapkan dan mengon
 - Gilab Runner Version: 18.0.0
 
 
-## 2. Runner Executors
-In carrying out its tasks, GitLab Runner implements various executors that can be used to run your builds in various environments.
+## 2. Kode Runner Executors
+Dalam menjalankan tugasnya, GitLab Runner mengimplementasikan berbagai eksekutor yang dapat digunakan untuk menjalankan build Anda di berbagai lingkungan.
 
-GitLab Runner provides the following executors:
+GitLab Runner menyediakan eksekutor berikut:
 
 | Executor       | Required configuration          | Where jobs are executed        | 
 | ----------- | -----------   | ----------- |
