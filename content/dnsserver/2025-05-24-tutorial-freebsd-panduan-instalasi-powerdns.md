@@ -20,7 +20,7 @@ Penggunaan PowerDNS dapat menggunakan DNS server lain seperti Bind untuk rekursi
 Bagi Anda yang menggunakan sistem Unix seperti FreeBSD, OpenBSD dan lainnya, PowerDNS merupakan solusi DNS server terbaik yang menawarkan kesederhanaan, kestabilan dan kehandalan. Alih-alih menggunakan berkas teks, PowerDNS menggunakan backend basis data untuk menyimpan datanya. Server basis data yang didukung oleh PowerDNS meliputi MariaDB, MySQL, PostgreSQL, dan SQLite3.
 
 Dalam posting ini, saya akan menunjukkan cara menginstal PowerDNS dengan server MySQL sebagai backend di FreeBSD 13.3. Saya juga membahas penggunaan pdnsutil untuk mengelola zona dan membuat nama domain, serta dig untuk memeriksa koneksi DNS dan memecahkan masalah server DNS.
-
+<br><br/>
 
 ![freebsd powerDNS Install](https://pbs.twimg.com/media/GsQBTgQaMAAFD_y?format=jpg&name=small)
 
@@ -31,7 +31,7 @@ Dalam posting ini, saya akan menunjukkan cara menginstal PowerDNS dengan server 
 - IP server: 192.168.5.2
 - MySQL server version: mysql80-server
 - CPU: AMD Phenom II X4 965 3400 MHz
-
+<br><br/>
 
 ## 2. Setting up FQDN
 FQDN (Fully Qualified Domain Name) adalah nama yang secara unik mengidentifikasi host di Internet. FQDN harus menyertakan nama domain induk. Fully Qualified Domain Name dalam DNS harus diakhiri dengan titik yang menunjukkan nama domain root. Saat Anda mendelegasikan nama domain, name server atau NS akan dianggap sebagai FQDN, yang merupakan nama domain berkualifikasi penuh dengan titik di bagian akhir.
@@ -154,7 +154,7 @@ Database: pdns
 ```
 
 ## 5. Menyiapkan PowerDNS
-Langkah berikutnya, Anda harus mengonfigurasi PowerDNS. File konfigurasi untuk konfigurasi tersebut berada di `/usr/local/etc/pdns`. Buka file pdns.conf dan tambahkan skrip MySQL seperti pada contoh di bawah ini.
+Langkah berikutnya, Anda harus mengonfigurasi PowerDNS. File konfigurasi untuk konfigurasi tersebut berada di `/usr/local/etc/pdns`. Buka file `pdns.conf` dan tambahkan skrip MySQL seperti pada contoh di bawah ini.
 
 ```console
 root@ns3:~ # cd /usr/local/etc/pdns
@@ -300,7 +300,7 @@ root@ns3:~ # sockstat -4 -p 53
 ```
 
 ## 6. Membuat forward zone
-Sebelum Anda membuat "zona maju", unduh file root.zone terlebih dahulu. Ikuti contoh di bawah ini.
+Sebelum Anda membuat "forward zone", unduh file `root.zone` terlebih dahulu. Ikuti contoh di bawah ini.
 
 ```console
 root@ns3:/usr/local/etc/pdns # wget ftp://ftp.rs.internic.net/domain/root.zone.gz && gunzip root.zone.gz
