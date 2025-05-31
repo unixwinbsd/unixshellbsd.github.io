@@ -28,11 +28,11 @@ Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis memb
 
 
 ## 1. Spesifikasi Sistem
-OS: FreeBSD 13.2
-Hostname/Domain: ns1@unixexplore.com
-IP Address: 192.168.5.2
-go version: go1.20.7 freebsd/amd64
-Port GoLang Web: 8999
+- OS: FreeBSD 13.2
+- Hostname/Domain: ns1@unixexplore.com
+- IP Address: 192.168.5.2
+- go version: go1.20.7 freebsd/amd64
+- Port GoLang Web: 8999
 
 
 ## 2. Create Simple Web Applications
@@ -45,7 +45,7 @@ Sebagai materi dasar atau materi pembuka, kita mulai dengan membuat aplikasi web
 root@ns1:~ # mkdir -p /var/GoogleBlog
 root@ns1:~ # cd /var/GoogleBlog
 ```
-Penjelasan dari skrip di atas adalah membuat direktori kerja dengan nama folder GoogleBlog yang kita tempatkan di folder /var/GoogleBlog. Setelah kita berhasil membuat direktori kerja, langkah selanjutnya adalah menuliskan kode program dalam bahasa GO.
+Penjelasan dari skrip di atas adalah membuat direktori kerja dengan nama folder GoogleBlog yang kita tempatkan di folder `/var/GoogleBlog`. Setelah kita berhasil membuat direktori kerja, langkah selanjutnya adalah menuliskan kode program dalam bahasa GO.
 
 Program Go disusun menjadi paket-paket. Paket adalah kumpulan file sumber dalam direktori yang sama yang dikompilasi bersama-sama. Fungsi, tipe, variabel, dan konstanta yang didefinisikan dalam satu file sumber dapat dilihat oleh semua file sumber lain dalam paket yang sama.
 
