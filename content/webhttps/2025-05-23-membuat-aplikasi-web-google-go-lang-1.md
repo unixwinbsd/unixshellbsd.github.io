@@ -1,6 +1,6 @@
 ---
-title: "Membuat Aplikasi Web dengan Google Go Lang Part 1" 
-date: 2025-05-23
+title: "Membuat Aplikasi Web dengan Google Go Lang Part 1"
+date: 2025-05-23T07:57:45+08:00
 tags: ["WebHTTPS"]
 categories: ["FreeBSD"]
 author: "Iwan Setiawan"
