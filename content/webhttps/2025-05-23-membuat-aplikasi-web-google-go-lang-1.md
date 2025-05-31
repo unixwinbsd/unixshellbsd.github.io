@@ -72,7 +72,7 @@ import (
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("<h1>Selamat Pagi Gunung Rinjani!</h1>"))
+	w.Write([]byte("<h1>Good Morning, FreeBSD!</h1>"))
 }
 
 func main() {
