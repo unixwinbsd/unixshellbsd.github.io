@@ -124,7 +124,7 @@ root@ns1:/var/GoogleBlog # go run main.go
 Buka Google Chrome dan ketik `"http://192.168.5.2:8999/"` di menu bilah alamat dan Anda dapat melihat hasilnya di Google Chrome.
 
 
-## 3. Menentukan Rute dan Fungsi Penangan dalam Go
+## 3. Menentukan Rute dan Fungsi Dalam Go
 
 Ada banyak cara untuk melakukan routing jalur HTTP di Go, termasuk pustaka standar http.ServeMux, tetapi pustaka tersebut hanya mendukung pencocokan awalan dasar. Selain itu, ada juga banyak pustaka router pihak ketiga. Di Go, routing dapat dilakukan dengan beberapa cara, termasuk:
 - Dengan memanfaatkan fungsi http.HandleFunc().
