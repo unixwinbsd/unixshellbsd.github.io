@@ -24,8 +24,7 @@ Implementasi variabel lingkungan pada sistem operasi FreeBSD sangatlah penting. 
     <b> <h3>
 Sistem operasi FreeBSD menggunakan variabel lingkungan untuk menyimpan informasi seperti string dan angka. Variabel dapat digunakan berulang kali di seluruh kode dan Anda dapat menetapkan nilai pada variabel tersebut, serta mengedit, menimpa, dan menghapusnya.
     </h3></b>
-    
-</div>
+</div><br></br>
 
 
 Dalam artikel ini kita akan mempelajari variabel lingkungan pada server FreeBSD. Misalnya, kita akan menggunakan aplikasi Composer, Go, dan Java.
