@@ -1,6 +1,6 @@
 ---
 title: "Cara Menggunakan Perintah ls di FreeBSD dengan Contoh"
-date: 2025-05-24T12:45:15+08:00
+date: 2025-05-25T08:35:25+08:00
 tags: ["WebHTTPS"]
 categories: ["FreeBSD"]
 author: "Iwan Setiawan"
