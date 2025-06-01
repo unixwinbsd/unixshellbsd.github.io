@@ -49,12 +49,12 @@ Isi direktori kerja Anda saat ini, yang merupakan cara teknis untuk menyatakan d
 root@ns4:/usr/local/etc # ls
 ```
 ### 2. Menampilkan berkas dan direktori tersembunyi
-Gunakan opsi -a dari perintah ls untuk menampilkan berkas dan direktori tersembunyi di direktori saat ini.
+Gunakan opsi `-a` dari perintah `ls` untuk menampilkan berkas dan direktori tersembunyi di direktori saat ini.
 
 ```console
 root@ns4:/usr/local/etc # ls -a
 ```
-File yang diawali dengan titik disembunyikan (.). Direktori saat ini (.) dan direktori induk (..) dapat anda lihat dengan perintah "ls -a".
+File yang diawali dengan titik disembunyikan (.). Direktori saat ini (.) dan direktori induk (..) dapat anda lihat dengan perintah `"ls -a"`.
 
 ### 3. Menampilkan informasi lengkap tentang berkas
 Opsi `"ls -l"` menampilkan konten direktori saat ini dalam format daftar panjang, satu per baris. Baris diawali dengan izin berkas atau direktori, nama pemilik dan grup, ukuran berkas, tanggal dan waktu pembuatan/pengubahan, nama berkas/folder sebagai beberapa atribut.
@@ -121,7 +121,7 @@ total 113258
      5 .cshrc                1 .local                1 .npm                  9 .ssh
 ```
 ### 8. Menampilkan Urutan Keluaran Terbalik Berdasarkan Tanggal
-Pada perintah di atas, argumen l digunakan untuk format daftar panjang, argumen `t` mengurutkan semua file dan direktori berdasarkan waktu modifikasi dan mencantumkan yang terbaru terlebih dahulu, dan argumen `r` digunakan untuk membalik urutan pengurutan.
+Pada perintah di atas, argumen `l` digunakan untuk format daftar panjang, argumen `t` mengurutkan semua file dan direktori berdasarkan waktu modifikasi dan mencantumkan yang terbaru terlebih dahulu, dan argumen `r` digunakan untuk membalik urutan pengurutan.
 
 ```console
 root@ns4:~ # ls -ltr
@@ -141,7 +141,7 @@ Perintah "ls -n" menampilkan UID (ID Pengguna) dan GID (ID Grup) dari setiap fil
 root@ns4:~ # ls -n
 ```
 ### 11. Mencantumkan berkas dan direktori yang dipisahkan dengan koma
-Perintah "ls -m" menampilkan semua berkas dan direktori yang dipisahkan dengan koma.
+Perintah `"ls -m"` menampilkan semua berkas dan direktori yang dipisahkan dengan koma.
 
 ```console
 root@ns4:~ # ls -m
@@ -159,7 +159,7 @@ Perintah `"ls -d */"` ini dapat digunakan untuk menampilkan hanya subdirektori d
 root@ns4:~ # ls -d */
 ```
 ### 14. Menampilkan halaman Bantuan perintah ls
-Dengan menggunakan `"ls --help"` ini, Anda dapat melihat panduan untuk perintah ls. Perintah ini memiliki lebih banyak opsi. Beberapa di antaranya diberikan di bawah ini sebagai referensi.
+Dengan menggunakan `"ls --help"` ini, Anda dapat melihat panduan untuk perintah `ls`. Perintah ini memiliki lebih banyak opsi. Beberapa di antaranya diberikan di bawah ini sebagai referensi.
 
 ```console
 root@ns4:~ # man ls
