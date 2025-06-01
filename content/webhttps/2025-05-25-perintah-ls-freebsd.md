@@ -10,5 +10,5 @@ editPost:
     URL: "https://github.com/unixwinbsd/unixwinbsd.github.io"
     Text: "GitHub repository"
 showToc: true
-disable
+disableAnchoredHeadings: false
 ---
