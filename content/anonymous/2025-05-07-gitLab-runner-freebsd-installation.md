@@ -1,6 +1,6 @@
 ---
 title: "Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya"
-date: 2025-07-24T11:35:41+08:00
+date: 2025-05-07T11:35:41+08:00
 tags: ["Anonymous"]
 categories: ["FreeBSD"]
 author: "Iwan Setiawan"
