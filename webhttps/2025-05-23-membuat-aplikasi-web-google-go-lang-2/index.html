@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Membuat Aplikasi Web dengan Google Go Lang Part 2 | WARNET DAPURNET</title>
+<meta name="keywords" content="WebHTTPS">
+<meta name="description" content="Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang">
+<meta name="author" content="Iwan Setiawan">
+<link rel="canonical" href="http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.977eaf2e691fe9d6783238f3ea60f3c0affcf333092baaee887438624edc50f3.css" integrity="sha256-l36vLmkf6dZ4Mjjz6mDzwK/88zMJK6ruiHQ4Yk7cUPM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/">
+  <meta property="og:site_name" content="WARNET DAPURNET">
+  <meta property="og:title" content="Membuat Aplikasi Web dengan Google Go Lang Part 2">
+  <meta property="og:description" content="Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang">
+  <meta property="og:locale" content="id-ID">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="webhttps">
+    <meta property="article:published_time" content="2025-05-23T10:15:15+08:00">
+    <meta property="article:modified_time" content="2025-05-23T10:15:15+08:00">
+    <meta property="article:tag" content="WebHTTPS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Membuat Aplikasi Web dengan Google Go Lang Part 2">
+<meta name="twitter:description" content="Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Data",
+      "item": "http://localhost:1313/webhttps/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Membuat Aplikasi Web dengan Google Go Lang Part 2",
+      "item": "http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Membuat Aplikasi Web dengan Google Go Lang Part 2",
+  "name": "Membuat Aplikasi Web dengan Google Go Lang Part 2",
+  "description": "Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang",
+  "keywords": [
+    "WebHTTPS"
+  ],
+  "articleBody": "Membuat aplikasi Restful merupakan salah satu cara populer untuk membangun blog web karena mengikuti arsitektur yang sederhana dan dapat diskalakan. Dengan CRUD, pengguna dapat dengan mudah memproses basis data MySQL. CRUD yang merupakan singkatan dari Create, Read, Update, dan Delete merupakan utilitas umum dalam pengembangan perangkat lunak. Kemampuan untuk melakukan operasi CRUD merupakan hal mendasar bagi pengembangan aplikasi apa pun. Dalam artikel ini, kita akan mempelajari cara membangun aplikasi CRUD sederhana menggunakan Go Lang dan server MySQL sebagai basis datanya.\nGo Lang merupakan bahasa pemrograman populer yang dikenal karena efisiensinya, kesederhanaannya, dan stabilitasnya, sedangkan MySQL merupakan sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Oracle berdasarkan bahasa kueri terstruktur (SQL).\nMySQL merupakan salah satu teknologi basis data paling populer dalam ekosistem big data modern, dan kini digunakan secara luas dan efektif, apa pun industrinya, jelas bahwa siapa pun yang terlibat dengan data perusahaan atau TI setidaknya harus memiliki pemahaman dasar tentang MySQL.\nDengan MySQL, bahkan mereka yang baru mempelajari sistem basis data relasional dapat langsung membangun sistem penyimpanan data yang mudah, cepat, dan aman. Data dalam MySQL disusun menurut model relasional. Dalam model ini, tabel terdiri dari baris dan kolom, dan hubungan antara elemen data semuanya mengikuti struktur logika yang ketat. Sering kali orang yang baru mempelajari Golang tidak tahu cara menyimpan data di MySQL karena tidak banyak sumber daya daring. Artikel ini akan membantu Anda memahami konsep Golang dengan MySQL.\n1. Spesifikasi Sistem yang Digunakan OS: FreeBSD 14. IP Address: 192.168.5.2. Go version: go-1.19. MySql Server. Hostname: ns7. 2. Buat proyek Golang Langkah pertama adalah membuat direktori kerja untuk menyiapkan lingkungan pengembangan dan memulai proyek Golang. Ikuti langkah-langkah di bawah ini untuk menyiapkan proyek Golang baru.\nroot@ns7:~ # cd /var root@ns7:/var # mkdir -p FreeBSD-Golang-MySQL root@ns7:/var # cd FreeBSD-Golang-MySQL root@ns7:/var/FreeBSD-Golang-MySQL # Setelah Anda selesai membuat direktori bahasa Go, buat file baru bernama \"main.go\".\nroot@ns7:/var/FreeBSD-Golang-MySQL # touch main.go root@ns7:/var/FreeBSD-Golang-MySQL # chmod +x main.go Pada file \"/root/var/FreeBSD-Golang-MySQL/main.go\", Anda masukkan skrip di bawah ini.\npackage main import ( \"database/sql\" \"html/template\" \"log\" \"net/http\" _ \"github.com/go-sql-driver/mysql\" ) // Employee Struct type Employee struct { ID int Name string City string } // Open Connection with MySQL Driver func dbConnect() (db *sql.DB) { dbDriver := \"mysql\" dbUser := \"jhondoe\" dbPass := \"router\" dbName := \"goblog\" db, err := sql.Open(dbDriver, dbUser+\":\"+dbPass+\"@/\"+dbName) if err != nil { panic(err.Error()) } return db } // Read All Templates on folder template var tmpl = template.Must(template.ParseGlob(\"template/*\")) // Index Page func Index(w http.ResponseWriter, r *http.Request) { db := dbConnect() rows, err := db.Query(\"SELECT * FROM Employee ORDER BY id DESC\") if err != nil { panic(err.Error()) } emp := Employee{} res := []Employee{} for rows.Next() { var id int var name, city string err = rows.Scan(\u0026id, \u0026name, \u0026city) if err != nil { panic(err.Error()) } emp.ID = id emp.Name = name emp.City = city res = append(res, emp) } tmpl.ExecuteTemplate(w, \"Index\", res) defer db.Close() } // Show Single Item func Show(w http.ResponseWriter, r *http.Request) { db := dbConnect() nID := r.URL.Query().Get(\"id\") rows, err := db.Query(\"SELECT * FROM Employee WHERE id = ?\", nID) if err != nil { panic(err.Error()) } emp := Employee{} for rows.Next() { var id int var name, city string err = rows.Scan(\u0026id, \u0026name, \u0026city) if err != nil { panic(err.Error()) } emp.ID = id emp.Name = name emp.City = city } tmpl.ExecuteTemplate(w, \"Show\", emp) defer db.Close() } // Show New Page func New(w http.ResponseWriter, r *http.Request) { tmpl.ExecuteTemplate(w, \"New\", nil) } // Edit Item func Edit(w http.ResponseWriter, r *http.Request) { db := dbConnect() nID := r.URL.Query().Get(\"id\") rows, err := db.Query(\"SELECT * FROM Employee WHERE id = ?\", nID) if err != nil { panic(err.Error()) } emp := Employee{} for rows.Next() { var id int var name, city string err = rows.Scan(\u0026id, \u0026name, \u0026city) if err != nil { panic(err.Error()) } emp.ID = id emp.Name = name emp.City = city } tmpl.ExecuteTemplate(w, \"Edit\", emp) defer db.Close() } // Insert Item func Insert(w http.ResponseWriter, r *http.Request) { db := dbConnect() if r.Method == \"POST\" { name := r.FormValue(\"name\") city := r.FormValue(\"city\") insert, err := db.Prepare(\"INSERT INTO Employee (name, city) VALUES(?, ?)\") if err != nil { panic(err.Error()) } insert.Exec(name, city) log.Println(\"INSERT: Name: \" + name + \" | City: \" + city) } defer db.Close() http.Redirect(w, r, \"/\", 301) } // Update Item func Update(w http.ResponseWriter, r *http.Request) { db := dbConnect() if r.Method == \"POST\" { name := r.FormValue(\"name\") city := r.FormValue(\"city\") id := r.FormValue(\"uid\") insert, err := db.Prepare(\"UPDATE Employee SET name = ?, city = ? WHERE id = ?\") if err != nil { panic(err.Error()) } insert.Exec(name, city, id) log.Println(\"UPDATE: Name: \" + name + \" | City: \" + city) } defer db.Close() http.Redirect(w, r, \"/\", 301) } // Delete Item func Delete(w http.ResponseWriter, r *http.Request) { db := dbConnect() emp := r.URL.Query().Get(\"id\") delete, err := db.Prepare(\"DELETE FROM Employee WHERE id = ?\") if err != nil { panic(err.Error()) } delete.Exec(emp) log.Println(\"DELETE\") defer db.Close() http.Redirect(w, r, \"/\", 301) } func main() { log.Println(\"Server started on: http://192.168.5.2:4000\") // Routes http.HandleFunc(\"/\", Index) http.HandleFunc(\"/show\", Show) http.HandleFunc(\"/new\", New) http.HandleFunc(\"/edit\", Edit) http.HandleFunc(\"/insert\", Insert) http.HandleFunc(\"/update\", Update) http.HandleFunc(\"/delete\", Delete) // Start server on port 4000 http.ListenAndServe(\"192.168.5.2:4000\", nil) } Perhatikan skrip http://192.168.5.2:4000, skrip tersebut adalah IP dan Port yang akan digunakan Go Lang untuk mengakses peramban Web. Gunakan perintah git untuk menginisialisasi proyek Go Lang Anda.\nroot@ns7:/var/FreeBSD-Golang-MySQL # go mod init github.com/iwanse1977/FreeBSD-Golang-MySQL root@ns7:/var/FreeBSD-Golang-MySQL # go mod tidy root@ns7:/var/FreeBSD-Golang-MySQL # go get github.com/go-sql-driver/mysql Dalam proyek kerja Anda, buat folder \"template\", dan buat file Edit.tmpl, Footer.tmpl, Header.tmpl, Index.tmpl, Menu.tmpl, New.tmpl, Show.tmpl.\nroot@ns7:/var/FreeBSD-Golang-MySQL # mkdir template root@ns7:/var/FreeBSD-Golang-MySQL # cd template root@ns7:/var/FreeBSD-Golang-MySQL/template # touch Edit.tmpl Footer.tmpl Header.tmpl Index.tmpl Menu.tmpl New.tmpl Show.tmpl Download the script code of the “*.tmpl” file\n3. Membuat Database MySQL Proyek Go lang Anda hampir selesai, tinggal satu langkah lagi. Sekarang Anda membuat database MySQL sebagai backend dari Go lang. Silakan masuk ke database server MySQL, dengan kata sandi root.\nroot@ns7:/var/FreeBSD-Golang-MySQL # mysql -u root -p Enter password: \"Enter your MySQL password\" Welcome to the MySQL monitor. Commands end with ; or \\g. Your MySQL connection id is 83 Server version: 8.0.35 Source distribution Copyright (c) 2000, 2023, Oracle and/or its affiliates. Oracle is a registered trademark of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners. Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement. root@localhost [(none)]\u003e Buat database \"goblog\" dan tabel \"Employee\".\nroot@localhost [(none)]\u003e create database goblog; root@localhost [(none)]\u003e use goblog; Database changed root@localhost [goblog]\u003e CREATE TABLE IF NOT EXISTS `Employee` ( -\u003e `id` int unsigned NOT NULL AUTO_INCREMENT, -\u003e `Name` text, -\u003e `city` text, -\u003e PRIMARY KEY (`id`) -\u003e ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4; Query OK, 0 rows affected, 1 warning (0.02 sec) root@localhost [goblog]\u003e Buat pengguna MySQL, sehingga database MySQL dapat dihubungkan ke Go lang.\nroot@localhost [(none)]\u003e CREATE USER 'jhondoe'@'localhost' IDENTIFIED BY 'router'; root@localhost [(none)]\u003e GRANT ALL PRIVILEGES ON * . * TO 'jhondoe'@'localhost'; root@localhost [(none)]\u003e FLUSH PRIVILEGES; 4. Jalankan aplikasi Sekarang setelah kita mengimplementasikan semua operasi MySQL dan Go lang, saatnya menguji aplikasi kita. Apakah berhasil atau tidak.\nBuka peramban web Google Chrome, dan jalankan perintah “http://192.168.5.2:4000”. Jika semua konfigurasi di atas sudah benar, Google Chrome akan menampilkan gambar berikut.\nroot@ns7:~ # cd /var/FreeBSD-Golang-MySQL root@ns7:/var/FreeBSD-Golang-MySQL # go run main.go Dalam artikel ini, kita dapat mempelajari cara membuat aplikasi CRUD sederhana menggunakan GoLang dan MySQL pada server FreeBSD. Anda dapat mengembangkan aplikasi berikut dengan tampilan menu yang menarik. Ikuti terus artikel terbaru kami tentang Go Lang.\n",
+  "wordCount" : "1227",
+  "inLanguage": "en",
+  "datePublished": "2025-05-23T10:15:15+08:00",
+  "dateModified": "2025-05-23T10:15:15+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Iwan Setiawan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WARNET DAPURNET",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="WARNET DAPURNET">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">WARNET DAPURNET</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/dnsserver/" title="DNSServer">
+                    <span>DNSServer</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/webhttps/" title="WebHTTPS">
+                    <span>WebHTTPS</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/anonymous/" title="Anonymous">
+                    <span>Anonymous</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/database/" title="DataBase">
+                    <span>DataBase</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://unixwinbsd.site" title="Blog">
+                    <span>Blog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Membuat Aplikasi Web dengan Google Go Lang Part 2
+    </h1>
+    <div class="post-meta"><span title='2025-05-23 10:15:15 +0800 +0800'>May 2025</span>&nbsp;&middot;&nbsp;Iwan Setiawan&nbsp;&middot;&nbsp;<a href="https://github.com/unixwinbsd/unixwinbsd.github.io" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-spesifikasi-sistem-yang-digunakan">1. Spesifikasi Sistem yang Digunakan</a></li>
+    <li><a href="#2-buat-proyek-golang">2. Buat proyek Golang</a></li>
+    <li><a href="#3-membuat-database-mysql">3. Membuat Database MySQL</a></li>
+    <li><a href="#4-jalankan-aplikasi">4. Jalankan aplikasi</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Membuat aplikasi Restful merupakan salah satu cara populer untuk membangun blog web karena mengikuti arsitektur yang sederhana dan dapat diskalakan. Dengan CRUD, pengguna dapat dengan mudah memproses basis data MySQL. CRUD yang merupakan singkatan dari Create, Read, Update, dan Delete merupakan utilitas umum dalam pengembangan perangkat lunak. Kemampuan untuk melakukan operasi CRUD merupakan hal mendasar bagi pengembangan aplikasi apa pun. Dalam artikel ini, kita akan mempelajari cara membangun aplikasi CRUD sederhana menggunakan Go Lang dan server MySQL sebagai basis datanya.</p>
+<p>Go Lang merupakan bahasa pemrograman populer yang dikenal karena efisiensinya, kesederhanaannya, dan stabilitasnya, sedangkan MySQL merupakan sistem manajemen basis data relasional (RDBMS) yang dikembangkan oleh Oracle berdasarkan bahasa kueri terstruktur (SQL).</p>
+<p>MySQL merupakan salah satu teknologi basis data paling populer dalam ekosistem big data modern, dan kini digunakan secara luas dan efektif, apa pun industrinya, jelas bahwa siapa pun yang terlibat dengan data perusahaan atau TI setidaknya harus memiliki pemahaman dasar tentang MySQL.</p>
+<p>Dengan MySQL, bahkan mereka yang baru mempelajari sistem basis data relasional dapat langsung membangun sistem penyimpanan data yang mudah, cepat, dan aman. Data dalam MySQL disusun menurut model relasional. Dalam model ini, tabel terdiri dari baris dan kolom, dan hubungan antara elemen data semuanya mengikuti struktur logika yang ketat. Sering kali orang yang baru mempelajari Golang tidak tahu cara menyimpan data di MySQL karena tidak banyak sumber daya daring. Artikel ini akan membantu Anda memahami konsep Golang dengan MySQL.</p>
+<h2 id="1-spesifikasi-sistem-yang-digunakan">1. Spesifikasi Sistem yang Digunakan<a hidden class="anchor" aria-hidden="true" href="#1-spesifikasi-sistem-yang-digunakan">#</a></h2>
+<ul>
+<li>OS: FreeBSD 14.</li>
+<li>IP Address: 192.168.5.2.</li>
+<li>Go version: go-1.19.</li>
+<li>MySql Server.</li>
+<li>Hostname: ns7.</li>
+</ul>
+<h2 id="2-buat-proyek-golang">2. Buat proyek Golang<a hidden class="anchor" aria-hidden="true" href="#2-buat-proyek-golang">#</a></h2>
+<p>Langkah pertama adalah membuat direktori kerja untuk menyiapkan lingkungan pengembangan dan memulai proyek Golang. Ikuti langkah-langkah di bawah ini untuk menyiapkan proyek Golang baru.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns7:~ # cd /var
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var # mkdir -p FreeBSD-Golang-MySQL
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var # cd FreeBSD-Golang-MySQL
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL #
+</span></span></span></code></pre></div><p>Setelah Anda selesai membuat direktori bahasa Go, buat file baru bernama <code>&quot;main.go&quot;</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # touch main.go
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # chmod +x main.go
+</span></span></span></code></pre></div><p>Pada file <code>&quot;/root/var/FreeBSD-Golang-MySQL/main.go&quot;</code>, Anda masukkan skrip di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>package main
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>import (
+</span></span><span style="display:flex;"><span>	&#34;database/sql&#34;
+</span></span><span style="display:flex;"><span>	&#34;html/template&#34;
+</span></span><span style="display:flex;"><span>	&#34;log&#34;
+</span></span><span style="display:flex;"><span>	&#34;net/http&#34;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	_ &#34;github.com/go-sql-driver/mysql&#34;
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Employee Struct
+</span></span><span style="display:flex;"><span>type Employee struct {
+</span></span><span style="display:flex;"><span>	ID   int
+</span></span><span style="display:flex;"><span>	Name string
+</span></span><span style="display:flex;"><span>	City string
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Open Connection with MySQL Driver
+</span></span><span style="display:flex;"><span>func dbConnect() (db *sql.DB) {
+</span></span><span style="display:flex;"><span>	dbDriver := &#34;mysql&#34;
+</span></span><span style="display:flex;"><span>	dbUser := &#34;jhondoe&#34;
+</span></span><span style="display:flex;"><span>	dbPass := &#34;router&#34;
+</span></span><span style="display:flex;"><span>	dbName := &#34;goblog&#34;
+</span></span><span style="display:flex;"><span>	db, err := sql.Open(dbDriver, dbUser+&#34;:&#34;+dbPass+&#34;@/&#34;+dbName)
+</span></span><span style="display:flex;"><span>	if err != nil {
+</span></span><span style="display:flex;"><span>		panic(err.Error())
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	return db
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Read All Templates on folder template
+</span></span><span style="display:flex;"><span>var tmpl = template.Must(template.ParseGlob(&#34;template/*&#34;))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Index Page
+</span></span><span style="display:flex;"><span>func Index(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	db := dbConnect()
+</span></span><span style="display:flex;"><span>	rows, err := db.Query(&#34;SELECT * FROM Employee ORDER BY id DESC&#34;)
+</span></span><span style="display:flex;"><span>	if err != nil {
+</span></span><span style="display:flex;"><span>		panic(err.Error())
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	emp := Employee{}
+</span></span><span style="display:flex;"><span>	res := []Employee{}
+</span></span><span style="display:flex;"><span>	for rows.Next() {
+</span></span><span style="display:flex;"><span>		var id int
+</span></span><span style="display:flex;"><span>		var name, city string
+</span></span><span style="display:flex;"><span>		err = rows.Scan(<span style="color:#f00;background-color:#faa">&amp;</span>id, <span style="color:#f00;background-color:#faa">&amp;</span>name, <span style="color:#f00;background-color:#faa">&amp;</span>city)
+</span></span><span style="display:flex;"><span>		if err != nil {
+</span></span><span style="display:flex;"><span>			panic(err.Error())
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		emp.ID = id
+</span></span><span style="display:flex;"><span>		emp.Name = name
+</span></span><span style="display:flex;"><span>		emp.City = city
+</span></span><span style="display:flex;"><span>		res = append(res, emp)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	tmpl.ExecuteTemplate(w, &#34;Index&#34;, res)
+</span></span><span style="display:flex;"><span>	defer db.Close()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Show Single Item
+</span></span><span style="display:flex;"><span>func Show(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	db := dbConnect()
+</span></span><span style="display:flex;"><span>	nID := r.URL.Query().Get(&#34;id&#34;)
+</span></span><span style="display:flex;"><span>	rows, err := db.Query(&#34;SELECT * FROM Employee WHERE id = ?&#34;, nID)
+</span></span><span style="display:flex;"><span>	if err != nil {
+</span></span><span style="display:flex;"><span>		panic(err.Error())
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	emp := Employee{}
+</span></span><span style="display:flex;"><span>	for rows.Next() {
+</span></span><span style="display:flex;"><span>		var id int
+</span></span><span style="display:flex;"><span>		var name, city string
+</span></span><span style="display:flex;"><span>		err = rows.Scan(<span style="color:#f00;background-color:#faa">&amp;</span>id, <span style="color:#f00;background-color:#faa">&amp;</span>name, <span style="color:#f00;background-color:#faa">&amp;</span>city)
+</span></span><span style="display:flex;"><span>		if err != nil {
+</span></span><span style="display:flex;"><span>			panic(err.Error())
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		emp.ID = id
+</span></span><span style="display:flex;"><span>		emp.Name = name
+</span></span><span style="display:flex;"><span>		emp.City = city
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	tmpl.ExecuteTemplate(w, &#34;Show&#34;, emp)
+</span></span><span style="display:flex;"><span>	defer db.Close()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Show New Page
+</span></span><span style="display:flex;"><span>func New(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	tmpl.ExecuteTemplate(w, &#34;New&#34;, nil)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Edit Item
+</span></span><span style="display:flex;"><span>func Edit(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	db := dbConnect()
+</span></span><span style="display:flex;"><span>	nID := r.URL.Query().Get(&#34;id&#34;)
+</span></span><span style="display:flex;"><span>	rows, err := db.Query(&#34;SELECT * FROM Employee WHERE id = ?&#34;, nID)
+</span></span><span style="display:flex;"><span>	if err != nil {
+</span></span><span style="display:flex;"><span>		panic(err.Error())
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	emp := Employee{}
+</span></span><span style="display:flex;"><span>	for rows.Next() {
+</span></span><span style="display:flex;"><span>		var id int
+</span></span><span style="display:flex;"><span>		var name, city string
+</span></span><span style="display:flex;"><span>		err = rows.Scan(<span style="color:#f00;background-color:#faa">&amp;</span>id, <span style="color:#f00;background-color:#faa">&amp;</span>name, <span style="color:#f00;background-color:#faa">&amp;</span>city)
+</span></span><span style="display:flex;"><span>		if err != nil {
+</span></span><span style="display:flex;"><span>			panic(err.Error())
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		emp.ID = id
+</span></span><span style="display:flex;"><span>		emp.Name = name
+</span></span><span style="display:flex;"><span>		emp.City = city
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	tmpl.ExecuteTemplate(w, &#34;Edit&#34;, emp)
+</span></span><span style="display:flex;"><span>	defer db.Close()
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Insert Item
+</span></span><span style="display:flex;"><span>func Insert(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	db := dbConnect()
+</span></span><span style="display:flex;"><span>	if r.Method == &#34;POST&#34; {
+</span></span><span style="display:flex;"><span>		name := r.FormValue(&#34;name&#34;)
+</span></span><span style="display:flex;"><span>		city := r.FormValue(&#34;city&#34;)
+</span></span><span style="display:flex;"><span>		insert, err := db.Prepare(&#34;INSERT INTO Employee (name, city) VALUES(?, ?)&#34;)
+</span></span><span style="display:flex;"><span>		if err != nil {
+</span></span><span style="display:flex;"><span>			panic(err.Error())
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		insert.Exec(name, city)
+</span></span><span style="display:flex;"><span>		log.Println(&#34;INSERT: Name: &#34; + name + &#34; | City: &#34; + city)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	defer db.Close()
+</span></span><span style="display:flex;"><span>	http.Redirect(w, r, &#34;/&#34;, 301)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Update Item
+</span></span><span style="display:flex;"><span>func Update(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	db := dbConnect()
+</span></span><span style="display:flex;"><span>	if r.Method == &#34;POST&#34; {
+</span></span><span style="display:flex;"><span>		name := r.FormValue(&#34;name&#34;)
+</span></span><span style="display:flex;"><span>		city := r.FormValue(&#34;city&#34;)
+</span></span><span style="display:flex;"><span>		id := r.FormValue(&#34;uid&#34;)
+</span></span><span style="display:flex;"><span>		insert, err := db.Prepare(&#34;UPDATE Employee SET name = ?, city = ? WHERE id = ?&#34;)
+</span></span><span style="display:flex;"><span>		if err != nil {
+</span></span><span style="display:flex;"><span>			panic(err.Error())
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		insert.Exec(name, city, id)
+</span></span><span style="display:flex;"><span>		log.Println(&#34;UPDATE: Name: &#34; + name + &#34; | City: &#34; + city)
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	defer db.Close()
+</span></span><span style="display:flex;"><span>	http.Redirect(w, r, &#34;/&#34;, 301)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>// Delete Item
+</span></span><span style="display:flex;"><span>func Delete(w http.ResponseWriter, r *http.Request) {
+</span></span><span style="display:flex;"><span>	db := dbConnect()
+</span></span><span style="display:flex;"><span>	emp := r.URL.Query().Get(&#34;id&#34;)
+</span></span><span style="display:flex;"><span>	delete, err := db.Prepare(&#34;DELETE FROM Employee WHERE id = ?&#34;)
+</span></span><span style="display:flex;"><span>	if err != nil {
+</span></span><span style="display:flex;"><span>		panic(err.Error())
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	delete.Exec(emp)
+</span></span><span style="display:flex;"><span>	log.Println(&#34;DELETE&#34;)
+</span></span><span style="display:flex;"><span>	defer db.Close()
+</span></span><span style="display:flex;"><span>	http.Redirect(w, r, &#34;/&#34;, 301)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>func main() {
+</span></span><span style="display:flex;"><span>	log.Println(&#34;Server started on: http://192.168.5.2:4000&#34;)
+</span></span><span style="display:flex;"><span>	// Routes
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/&#34;, Index)
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/show&#34;, Show)
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/new&#34;, New)
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/edit&#34;, Edit)
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/insert&#34;, Insert)
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/update&#34;, Update)
+</span></span><span style="display:flex;"><span>	http.HandleFunc(&#34;/delete&#34;, Delete)
+</span></span><span style="display:flex;"><span>	// Start server on port 4000
+</span></span><span style="display:flex;"><span>	http.ListenAndServe(&#34;192.168.5.2:4000&#34;, nil)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Perhatikan skrip <code>http://192.168.5.2:4000</code>, skrip tersebut adalah IP dan Port yang akan digunakan Go Lang untuk mengakses peramban Web. Gunakan perintah git untuk menginisialisasi proyek Go Lang Anda.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # go mod init github.com/iwanse1977/FreeBSD-Golang-MySQL
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # go mod tidy
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # go get github.com/go-sql-driver/mysql
+</span></span></span></code></pre></div><p>Dalam proyek kerja Anda, buat folder <code>&quot;template&quot;</code>, dan buat file <code>Edit.tmpl, Footer.tmpl, Header.tmpl, Index.tmpl, Menu.tmpl, New.tmpl, Show.tmpl</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # mkdir template
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # cd template
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL/template # touch Edit.tmpl Footer.tmpl Header.tmpl Index.tmpl Menu.tmpl New.tmpl Show.tmpl
+</span></span></span></code></pre></div><p>Download the script code of the &ldquo;*.tmpl&rdquo; file</p>
+<h2 id="3-membuat-database-mysql">3. Membuat Database MySQL<a hidden class="anchor" aria-hidden="true" href="#3-membuat-database-mysql">#</a></h2>
+<p>Proyek Go lang Anda hampir selesai, tinggal satu langkah lagi. Sekarang Anda membuat database MySQL sebagai backend dari Go lang. Silakan masuk ke database server MySQL, dengan kata sandi root.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # mysql -u root -p
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Enter password: &#34;Enter your MySQL password&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Welcome to the MySQL monitor.  Commands end with ; or \g.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Your MySQL connection id is 83
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Server version: 8.0.35 Source distribution
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Oracle is a registered trademark of Oracle Corporation and/or its
+</span></span></span><span style="display:flex;"><span><span style="color:#888">affiliates. Other names may be trademarks of their respective
+</span></span></span><span style="display:flex;"><span><span style="color:#888">owners.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [(none)]&gt;
+</span></span></span></code></pre></div><p>Buat database <code>&quot;goblog&quot;</code> dan tabel <code>&quot;Employee&quot;</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@localhost [(none)]&gt; create database goblog;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@localhost [(none)]&gt; use goblog;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Database changed
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@localhost [goblog]&gt; CREATE TABLE IF NOT EXISTS `Employee` (
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    -&gt;   `id` int unsigned NOT NULL AUTO_INCREMENT,
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    -&gt;   `Name` text,
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    -&gt;   `city` text,
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    -&gt;   PRIMARY KEY (`id`)
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    -&gt; ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Query OK, 0 rows affected, 1 warning (0.02 sec)
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [goblog]&gt;
+</span></span></span></code></pre></div><p>Buat pengguna MySQL, sehingga database MySQL dapat dihubungkan ke Go lang.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@localhost [(none)]&gt; CREATE USER &#39;jhondoe&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;router&#39;;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@localhost [(none)]&gt; GRANT ALL PRIVILEGES ON * . * TO &#39;jhondoe&#39;@&#39;localhost&#39;;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@localhost [(none)]&gt; FLUSH PRIVILEGES;
+</span></span></span></code></pre></div><h2 id="4-jalankan-aplikasi">4. Jalankan aplikasi<a hidden class="anchor" aria-hidden="true" href="#4-jalankan-aplikasi">#</a></h2>
+<p>Sekarang setelah kita mengimplementasikan semua operasi MySQL dan Go lang, saatnya menguji aplikasi kita. Apakah berhasil atau tidak.</p>
+<p>Buka peramban web Google Chrome, dan jalankan perintah &ldquo;http://192.168.5.2:4000&rdquo;. Jika semua konfigurasi di atas sudah benar, Google Chrome akan menampilkan gambar berikut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns7:~ # cd /var/FreeBSD-Golang-MySQL
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns7:/var/FreeBSD-Golang-MySQL # go run main.go
+</span></span></span></code></pre></div><p><img alt="contoh penggunaan crud mysql server" loading="lazy" src="https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/Contoh%20penggunaan%20Crud%20MysQL.jpg"></p>
+<p>Dalam artikel ini, kita dapat mempelajari cara membuat aplikasi CRUD sederhana menggunakan GoLang dan MySQL pada server FreeBSD. Anda dapat mengembangkan aplikasi berikut dengan tampilan menu yang menarik. Ikuti terus artikel terbaru kami tentang Go Lang.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/webhttps/">WebHTTPS</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 WARNET DAPURNET</span> ·     
+    <span>
+    Powered by 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">hugo</a>, <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">papermod</a>, &amp;
+        <a href="https://github.com/pmichaillat/hugo-website/" rel="noopener" target="_blank">hugo-website</a>.
+    </span>
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Courses on WARNET DAPURNET</title>
+    <link>http://localhost:1313/dnsserver/</link>
+    <description>Recent content in Courses on WARNET DAPURNET</description>
+    <generator>Hugo -- 0.147.6</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Sat, 24 May 2025 08:57:45 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/dnsserver/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorial FreeBSD - Panduan Instalasi PowerDNS</title>
+      <link>http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/</link>
+      <pubDate>Sat, 24 May 2025 08:57:45 +0800</pubDate>
+      <guid>http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/</guid>
+      <description>Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C&#43;&#43; dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja</description>
+    </item>
+  </channel>
+</rss>

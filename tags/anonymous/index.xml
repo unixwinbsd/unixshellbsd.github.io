@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Anonymous on WARNET DAPURNET</title>
+    <link>http://localhost:1313/tags/anonymous/</link>
+    <description>Recent content in Anonymous on WARNET DAPURNET</description>
+    <generator>Hugo -- 0.147.6</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Wed, 07 May 2025 11:35:41 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/anonymous/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya</title>
+      <link>http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/</link>
+      <pubDate>Wed, 07 May 2025 11:35:41 +0800</pubDate>
+      <guid>http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/</guid>
+      <description>GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan</description>
+    </item>
+  </channel>
+</rss>

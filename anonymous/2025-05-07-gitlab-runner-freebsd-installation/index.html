@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya | WARNET DAPURNET</title>
+<meta name="keywords" content="Anonymous">
+<meta name="description" content="GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan">
+<meta name="author" content="Iwan Setiawan">
+<link rel="canonical" href="http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.977eaf2e691fe9d6783238f3ea60f3c0affcf333092baaee887438624edc50f3.css" integrity="sha256-l36vLmkf6dZ4Mjjz6mDzwK/88zMJK6ruiHQ4Yk7cUPM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/">
+  <meta property="og:site_name" content="WARNET DAPURNET">
+  <meta property="og:title" content="Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya">
+  <meta property="og:description" content="GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan">
+  <meta property="og:locale" content="id-ID">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="anonymous">
+    <meta property="article:published_time" content="2025-05-07T11:35:41+08:00">
+    <meta property="article:modified_time" content="2025-05-07T11:35:41+08:00">
+    <meta property="article:tag" content="Anonymous">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya">
+<meta name="twitter:description" content="GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Books",
+      "item": "http://localhost:1313/anonymous/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya",
+      "item": "http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya",
+  "name": "Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya",
+  "description": "GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan",
+  "keywords": [
+    "Anonymous"
+  ],
+  "articleBody": "Tampaknya Gitlab memiliki ambisi besar untuk menggeser Github, karena banyak sekali aplikasi yang dibuat untuk mengelola repositori Gitlab. Dengan aplikasi tersebut, sangat memudahkan pengguna Gitlab untuk terhubung dan berkomunikasi dengan repositorinya di Gitlab. Seolah pengguna gitlab dimanjakan dengan kemudahan aplikasi tersebut. Salah sau aplikasi yang sering digunakan oleh para pengmbang diantaranya adalah gitlab-runner.\nGitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan. Dengan kata lain, ini adalah komponen penting dari alur kerja integrasi dan penerapan berkelanjutan GitLab.\nSebagai aplikasi yang berjalan pada mesin atau kontainer terpisah, tujuan utama GitLab Runner adalah untuk menjalankan pekerjaan dari konfigurasi GitLab CI/CD. Saat kita mengirim kode ke repositori GitLab, runner mengambil pekerjaan, menjalankan perintah yang ditentukan, dan melaporkan hasilnya kembali ke GitLab. Jadi, dengan menggunakan GitLab Runner, kita dapat mengotomatiskan proses pembuatan, pengujian, dan penerapan, menghemat waktu dan mengurangi risiko kesalahan manual.\nDalam tutorial yang kami tulis ini, kita akan melihat cara menyiapkan dan mengonfigurasi GitLab Runner di FreeBSD, serta berbagai fitur dan kemampuannya.\n1. Spesifikasi Sistem OS: FreeBSD 14. 3 Hostname: ns4 IP Address: 192.168.5.71 Gilab Runner Version: 18.0.0 2. Kode Runner Executors Dalam menjalankan tugasnya, GitLab Runner mengimplementasikan berbagai eksekutor yang dapat digunakan untuk menjalankan build Anda di berbagai lingkungan.\nGitLab Runner menyediakan eksekutor berikut:\nExecutor Required configuration Where jobs are executed shell Local shell. Default executor. docker [runners.docker] and Docker Engine Docker container. docker-windows [runners.docker] and Docker Engine Windows Dockercontainer. docker-ssh [runners.docker], [runners.ssh], and Docker Engine Docker container, but with an SSH connection. The Docker container is executed on the local machine. This setting changes how commands are run inside the container. If you want to run docker commands on an external machine, change the parameterhostin the sectionrunners.docker. ssh [runners.ssh] SSH, remotely. parallels [runners.parallels] and [runners.ssh] Parallels VM, SSH connection. virtualbox [runners.virtualbox] and [runners.ssh] VirtualBox VM, SSH connection. docker+machine [runners.docker] and [runners.machine] Likedocker, but uses auto-scaled Docker machines. docker-ssh+machine [runners.docker] and [runners.machine] Likedocker-ssh, but uses auto-scaled Docker machines. kubernetes [runners.kubernetes] Kubernetes pods. 3. Instalasi Gitlab Runner Pada FreeBSD Gitlab Runner telah tersedia di paket PKG dan sistem ports. Anda dapat langsung menginstalnya dengan salah satu paket tersebut. Kami sarankan gunakan paket PKG untuk mempermudah proses instalasi. Di bawah ini adalah perintah yang dapat anda jalankan untuk menginstal Gitlab Runner\nroot@ns4:~ # pkg install devel/gitlab-runner Perlu anda catat, selama proses instalasi berlangsung, sistem akan membuat user dan group untuk Gitlab Runner dengan nama gitlab-runner:gitlab-runner.\n3.1. Mengaktifkan Gitlab Runner Setelah proses instalasi selesai, anda dapat langsung mengaktifkan Gitlab Runner di file /etc/rc.conf. Pada file tersebut ketikkan skrip di bawah ini.\ngitlab_runner_enable=\"YES\" gitlab_runner_dir=\"/var/tmp/gitlab_runner\" gitlab_runner_user=\"gitlab-runner\" gitlab_runner_group=\"gitlab-runner\" gitlab_runner_syslogtag=\"gitlab-runner\" gitlab_runner_svcj_options=\"net_basic\" 3.2. Menjalankan Gitlab Runner Skrip di file /etc/rc.conf digunakan untuk mengaktifkan Gilab Runner agar dapat berjalan secara otomatis. Anda juga dapat menjalankan Gitlab Runner dengan menjalankan perintah berikut.\nroot@ns4:~ # service gitlab_runner restart Stopping gitlab_runner. Waiting for PIDS: 1156, 1156. Starting gitlab_runner. root@ns4:~ # 3.3. Daftarkan Gitlab Runner Gitlab Runner yang telah anda aktifkan harus segera didaftarkan ke Gitlab agar fungsinya bisa anda gunakan. Pendaftaran runner akan membuat koneksi antara runner dan GitLab, sehingga keduanya dapat berkomunikasi dan menjalankan tugas.\nUntuk membuat Runner, anda harus mendaftarkan Runner anda di situs Gitlab. Pada repositori kerja anda yang ada di Gitlab, klik menu Settings \u003e\u003e CI/CD, setelah itu anda klik menu Runners. Pada menu Project runners, anda klik menu create project runner. Perhatikan gambar berikut ini. Setelah itu akan tampil kode token runner, kode tersebut harus anda daftarkan melalui menu shell FreeBSD. Pada gambar ke-3, Step 1 dan Step 3 harus anda jalankan melalui menu Shell FreeBSD. Berikut ini perintah untuk mendaftarkan Gitlab Runner.\nroot@ns4:~ # gitlab-runner register --url https://gitlab.com --token glrt-pJESaf7VlJfjyaryLccHN286MQpwOjE1djNkegp0OjMKdTpncXhwcBg.01.1j1mlp8bv Runtime platform arch=amd64 os=freebsd pid=1078 revision=18.0.0 version=18.0.0 Running in system-mode. WARNING: You need to manually start builds processing: WARNING: $ gitlab-runner run Enter the GitLab instance URL (for example, https://gitlab.com/): [https://gitlab.com]: Verifying runner... is valid runner=pJESaf7Vl Enter a name for the runner. This is stored only in the local config.toml file: [ns4]: Enter an executor: kubernetes, shell, ssh, docker, docker-windows, docker+machine, docker-autoscaler, instance, custom, parallels, virtualbox: shell Runner registered successfully. Feel free to start it, but if it's running already the config should be automatically reloaded! Configuration (with the authentication token) was saved in \"/usr/local/etc/gitlab-runner/config.toml\" root@ns4:~ # root@ns4:~ # gitlab-runner run Pada sistem FreeBSD, semua informasi Gitlab Runner yang telah anda buat di atas akan disimpan di file /usr/local/etc/gitlab-runner/config.toml.\nUntuk melihat isi skirp dari file tersebut, jalankan perintah cat.\nroot@ns4:~ # cat /usr/local/etc/gitlab-runner/config.toml concurrent = 1 check_interval = 0 connection_max_age = \"15m0s\" shutdown_timeout = 0 [session_server] session_timeout = 1800 [[runners]] name = \"ns4\" url = \"https://gitlab.com\" id = 47669129 token = \"glrt-pJESaf7VlJfjyaryLccHN286MQpwOjE1djNkegp0OjMKdTpncXhwcBg.01.1j1mlp8bv\" token_obtained_at = 2025-05-31T08:45:47Z token_expires_at = 0001-01-01T00:00:00Z executor = \"shell\" [runners.cache] MaxUploadedArchiveSize = 0 [runners.cache.s3] [runners.cache.gcs] [runners.cache.azure] root@ns4:~ # 3.4. Menampilkan Daftar Gitlab Runner Pada Gitlab anda dapat membuat banyak Runner, kami sarankan buat Runner sesuai keperluan saja. Untuk melihat daftar Runner yang telah anda buat, jalankan perintah berikut.\nroot@ns4:~ # service gitlab_runner list Runtime platform arch=amd64 os=freebsd pid=1113 revision=18.0.0 version=18.0.0 Listing configured runners ConfigFile=/var/tmp/gitlab_runner/.gitlab-runner/config.toml runner1234 Executor=shell Token=glrt-NgUu45FU3jLLOE6YbT6Hd286MQpwOjE1djNkegp0OjMKdTpncXhwcBg.01.1j0dbf347 URL=https://gitlab.com 3.5. Opsi (flags) Gitlab Runner Perintah gitlab-runner memiliki banyak sekali opsi, namun opsi yang kami jelaskan di atas salah satu perintah yang sangat penting dan harus dijalankan ketika anda akan menggunakan Gitlab Runner. Berikut ini adalah daftar opsi perintah gitlab-runner yang dapat anda coba.\nOption Description list List all configured runners run run multi runner service register register a new runner reset-token reset a runner’s token install install service uninstall uninstall service start start service Stop stop service restart restart service status get status of a service run-single start single runner unregister unregister specific runner verify verify all registered runners wrapper start multi runner service wrapped with gRPC manager server fleeting manage fleeting plugins artifacts-downloader download and extract build artifacts (internal) artifacts-uploader create and upload build artifacts (internal) cache-archiver create and upload cache artifacts (internal) cache-extractor download and extract cache artifacts (internal) cache-init changed permissions for cache paths (internal) health-check check health for a specific address proxy-exec execute internal commands (internal) read-logs reads job logs from a file, used by kubernetes executor (internal) help, h Shows a list of commands or help for one command –cpuprofile value write cpu profile to file [$CPU_PROFILE] –debug debug mode [$RUNNER_DEBUG] –log-format value Choose log format (options: runner, text, json) [$LOG_FORMAT] –log-level value, -l value Log level (options: debug, info, warn, error, fatal, panic) [$LOG_LEVEL] –help, -h show help –version, -v print the version Singkatnya, gitlab-runner adalah alat penting untuk mengelola eksekusi pekerjaan CI/CD di GitLab. Alat ini menyederhanakan pendaftaran, konfigurasi, penyebaran, dan pengelolaan GitLab Runner, sehingga Anda dapat mengotomatiskan dan mengatur proses pengembangan dan penyebaran perangkat lunak secara efisien.\nDengan menggunakan contoh yang diberikan, Anda dapat mendaftarkan, mengelola, dan memverifikasi runner secara efisien, sehingga proses pengembangan hingga penerapan berjalan lancar. Baik saat menyiapkan lingkungan baru, memelihara sistem aktif, atau memecahkan masalah konektivitas, alat ini membekali Anda dengan kemampuan yang dibutuhkan untuk beradaptasi dengan tuntutan proyek yang terus berkembang.\n",
+  "wordCount" : "1166",
+  "inLanguage": "en",
+  "datePublished": "2025-05-07T11:35:41+08:00",
+  "dateModified": "2025-05-07T11:35:41+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Iwan Setiawan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WARNET DAPURNET",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="WARNET DAPURNET">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">WARNET DAPURNET</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/dnsserver/" title="DNSServer">
+                    <span>DNSServer</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/webhttps/" title="WebHTTPS">
+                    <span>WebHTTPS</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/anonymous/" title="Anonymous">
+                    <span>Anonymous</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/database/" title="DataBase">
+                    <span>DataBase</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://unixwinbsd.site" title="Blog">
+                    <span>Blog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya
+    </h1>
+    <div class="post-meta"><span title='2025-05-07 11:35:41 +0800 +0800'>May 2025</span>&nbsp;&middot;&nbsp;Iwan Setiawan&nbsp;&middot;&nbsp;<a href="https://github.com/unixwinbsd/unixwinbsd.github.io" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-spesifikasi-sistem">1. Spesifikasi Sistem</a></li>
+    <li><a href="#2-kode-runner-executors">2. Kode Runner Executors</a></li>
+    <li><a href="#3-instalasi-gitlab-runner">3. Instalasi Gitlab Runner</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Tampaknya Gitlab memiliki ambisi besar untuk menggeser Github, karena banyak sekali aplikasi yang dibuat untuk mengelola repositori Gitlab. Dengan aplikasi tersebut, sangat memudahkan pengguna Gitlab untuk terhubung dan berkomunikasi dengan repositorinya di Gitlab. Seolah pengguna gitlab dimanjakan dengan kemudahan aplikasi tersebut. Salah sau aplikasi yang sering digunakan oleh para pengmbang diantaranya adalah <code>gitlab-runner</code>.</p>
+<p>GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang
+mengkoordinasikan pekerjaan. Dengan kata lain, ini adalah komponen penting dari alur kerja integrasi dan penerapan berkelanjutan GitLab.</p>
+<p>Sebagai aplikasi yang berjalan pada mesin atau kontainer terpisah, tujuan utama GitLab Runner adalah untuk menjalankan pekerjaan dari konfigurasi GitLab CI/CD. Saat kita mengirim kode ke repositori GitLab, runner mengambil pekerjaan, menjalankan perintah yang ditentukan, dan melaporkan hasilnya kembali ke GitLab. Jadi, dengan menggunakan GitLab Runner, kita dapat mengotomatiskan proses pembuatan, pengujian, dan penerapan, menghemat waktu dan mengurangi risiko kesalahan manual.</p>
+<p>Dalam tutorial yang kami tulis ini, kita akan melihat cara menyiapkan dan mengonfigurasi GitLab Runner di FreeBSD, serta berbagai fitur dan kemampuannya.</p>
+<h2 id="1-spesifikasi-sistem">1. Spesifikasi Sistem<a hidden class="anchor" aria-hidden="true" href="#1-spesifikasi-sistem">#</a></h2>
+<ul>
+<li>OS: FreeBSD 14. 3</li>
+<li>Hostname: ns4</li>
+<li>IP Address: 192.168.5.71</li>
+<li>Gilab Runner Version: 18.0.0</li>
+</ul>
+<h2 id="2-kode-runner-executors">2. Kode Runner Executors<a hidden class="anchor" aria-hidden="true" href="#2-kode-runner-executors">#</a></h2>
+<p>Dalam menjalankan tugasnya, GitLab Runner mengimplementasikan berbagai eksekutor yang dapat digunakan untuk menjalankan build Anda di berbagai lingkungan.</p>
+<p>GitLab Runner menyediakan eksekutor berikut:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Executor</th>
+          <th>Required configuration</th>
+          <th>Where jobs are executed</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>shell</td>
+          <td></td>
+          <td>Local shell. Default executor.</td>
+      </tr>
+      <tr>
+          <td>docker</td>
+          <td>[runners.docker] and Docker Engine</td>
+          <td>Docker container.</td>
+      </tr>
+      <tr>
+          <td>docker-windows</td>
+          <td>[runners.docker] and Docker Engine</td>
+          <td>Windows Dockercontainer.</td>
+      </tr>
+      <tr>
+          <td>docker-ssh</td>
+          <td>[runners.docker], [runners.ssh], and Docker Engine</td>
+          <td>Docker container, but with an SSH connection. The Docker container is executed on the local machine. This setting changes how commands are run inside the container. If you want to run docker commands on an external machine, change the parameterhostin the sectionrunners.docker.</td>
+      </tr>
+      <tr>
+          <td>ssh</td>
+          <td>[runners.ssh]</td>
+          <td>SSH, remotely.</td>
+      </tr>
+      <tr>
+          <td>parallels</td>
+          <td>[runners.parallels] and [runners.ssh]</td>
+          <td>Parallels VM, SSH connection.</td>
+      </tr>
+      <tr>
+          <td>virtualbox</td>
+          <td>[runners.virtualbox] and [runners.ssh]</td>
+          <td>VirtualBox VM, SSH connection.</td>
+      </tr>
+      <tr>
+          <td>docker+machine</td>
+          <td>[runners.docker] and [runners.machine]</td>
+          <td>Likedocker, but uses auto-scaled Docker machines.</td>
+      </tr>
+      <tr>
+          <td>docker-ssh+machine</td>
+          <td>[runners.docker] and [runners.machine]</td>
+          <td>Likedocker-ssh, but uses auto-scaled Docker machines.</td>
+      </tr>
+      <tr>
+          <td>kubernetes</td>
+          <td>[runners.kubernetes]</td>
+          <td>Kubernetes pods.</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="3-instalasi-gitlab-runner">3. Instalasi Gitlab Runner<a hidden class="anchor" aria-hidden="true" href="#3-instalasi-gitlab-runner">#</a></h2>
+<p>Pada FreeBSD Gitlab Runner telah tersedia di paket PKG dan sistem ports. Anda dapat langsung menginstalnya dengan salah satu paket tersebut. Kami sarankan gunakan paket PKG untuk mempermudah proses instalasi. Di bawah ini adalah perintah yang dapat anda jalankan untuk menginstal Gitlab Runner</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # pkg install devel/gitlab-runner
+</span></span></span></code></pre></div><p>Perlu anda catat, selama proses instalasi berlangsung, sistem akan membuat user dan group untuk Gitlab Runner dengan nama <code>gitlab-runner:gitlab-runner</code>.</p>
+<h3 id="31-mengaktifkan-gitlab-runner">3.1. Mengaktifkan Gitlab Runner<a hidden class="anchor" aria-hidden="true" href="#31-mengaktifkan-gitlab-runner">#</a></h3>
+<p>Setelah proses instalasi selesai, anda dapat langsung mengaktifkan Gitlab Runner di file <code>/etc/rc.conf</code>. Pada file tersebut ketikkan skrip di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">gitlab_runner_enable=&#34;YES&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gitlab_runner_dir=&#34;/var/tmp/gitlab_runner&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gitlab_runner_user=&#34;gitlab-runner&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gitlab_runner_group=&#34;gitlab-runner&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gitlab_runner_syslogtag=&#34;gitlab-runner&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gitlab_runner_svcj_options=&#34;net_basic&#34;
+</span></span></span></code></pre></div><h3 id="32-menjalankan-gitlab-runner">3.2. Menjalankan Gitlab Runner<a hidden class="anchor" aria-hidden="true" href="#32-menjalankan-gitlab-runner">#</a></h3>
+<p>Skrip di file <code>/etc/rc.conf</code> digunakan untuk mengaktifkan Gilab Runner agar dapat berjalan secara otomatis. Anda juga dapat menjalankan Gitlab Runner dengan menjalankan perintah berikut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ #   service gitlab_runner restart
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Stopping gitlab_runner.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Waiting for PIDS: 1156, 1156.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Starting gitlab_runner.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns4:~ #
+</span></span></span></code></pre></div><h3 id="33-daftarkan-gitlab-runner">3.3. Daftarkan Gitlab Runner<a hidden class="anchor" aria-hidden="true" href="#33-daftarkan-gitlab-runner">#</a></h3>
+<p>Gitlab Runner yang telah anda aktifkan harus segera didaftarkan ke Gitlab agar fungsinya bisa anda gunakan. Pendaftaran runner akan membuat koneksi antara runner dan GitLab, sehingga keduanya dapat berkomunikasi dan menjalankan tugas.</p>
+<p>Untuk membuat Runner, anda harus mendaftarkan Runner anda di situs Gitlab. Pada repositori kerja anda yang ada di Gitlab, klik menu <code>Settings  &gt;&gt; CI/CD</code>, setelah itu anda klik menu <code>Runners</code>. Pada menu <code>Project runners</code>, anda klik menu <code>create project runner</code>. Perhatikan gambar berikut ini.
+<br><br/>
+<img alt="create project runner gitlab" loading="lazy" src="https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/create%20project%20runner.jpg">
+<br><br/>
+<img alt="configuration runner" loading="lazy" src="https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/configuration%20runner.jpg">
+<br><br/>
+Setelah itu akan tampil kode token runner, kode tersebut harus anda daftarkan melalui menu shell FreeBSD.
+<br><br/>
+<img alt="register runner" loading="lazy" src="https://gitea.com/UnixBSDShell/Web-Static-With-Ruby-Jekyll-Site-NetBSD/raw/branch/main/images/register%20runner.jpg">
+<br><br/>
+Pada gambar ke-3, <code>Step 1</code> dan <code>Step 3</code> harus anda jalankan melalui menu Shell FreeBSD. Berikut ini perintah untuk mendaftarkan Gitlab Runner.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # gitlab-runner register  --url https://gitlab.com  --token glrt-pJESaf7VlJfjyaryLccHN286MQpwOjE1djNkegp0OjMKdTpncXhwcBg.01.1j1mlp8bv
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Runtime platform                                    arch=amd64 os=freebsd pid=1078 revision=18.0.0 version=18.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Running in system-mode.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">WARNING: You need to manually start builds processing:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">WARNING: $ gitlab-runner run
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Enter the GitLab instance URL (for example, https://gitlab.com/):
+</span></span></span><span style="display:flex;"><span><span style="color:#888">[https://gitlab.com]:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Verifying runner... is valid                        runner=pJESaf7Vl
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Enter a name for the runner. This is stored only in the local config.toml file:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">[ns4]:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Enter an executor: kubernetes, shell, ssh, docker, docker-windows, docker+machine, docker-autoscaler, instance, custom, parallels, virtualbox:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">shell
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Runner registered successfully. Feel free to start it, but if it&#39;s running already the config should be automatically reloaded!
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Configuration (with the authentication token) was saved in &#34;/usr/local/etc/gitlab-runner/config.toml&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns4:~ #
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # gitlab-runner run
+</span></span></span></code></pre></div><p>Pada sistem FreeBSD, semua informasi Gitlab Runner yang telah anda buat di atas akan disimpan di file <code>/usr/local/etc/gitlab-runner/config.toml</code>.</p>
+<p>Untuk melihat isi skirp dari file tersebut, jalankan perintah <code>cat</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # cat /usr/local/etc/gitlab-runner/config.toml
+</span></span></span><span style="display:flex;"><span><span style="color:#888">concurrent = 1
+</span></span></span><span style="display:flex;"><span><span style="color:#888">check_interval = 0
+</span></span></span><span style="display:flex;"><span><span style="color:#888">connection_max_age = &#34;15m0s&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">shutdown_timeout = 0
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">[session_server]
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  session_timeout = 1800
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">[[runners]]
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  name = &#34;ns4&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  url = &#34;https://gitlab.com&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  id = 47669129
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  token = &#34;glrt-pJESaf7VlJfjyaryLccHN286MQpwOjE1djNkegp0OjMKdTpncXhwcBg.01.1j1mlp8bv&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  token_obtained_at = 2025-05-31T08:45:47Z
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  token_expires_at = 0001-01-01T00:00:00Z
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  executor = &#34;shell&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">  [runners.cache]
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    MaxUploadedArchiveSize = 0
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    [runners.cache.s3]
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    [runners.cache.gcs]
+</span></span></span><span style="display:flex;"><span><span style="color:#888">    [runners.cache.azure]
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns4:~ #
+</span></span></span></code></pre></div><h3 id="34-menampilkan-daftar-gitlab-runner">3.4. Menampilkan Daftar Gitlab Runner<a hidden class="anchor" aria-hidden="true" href="#34-menampilkan-daftar-gitlab-runner">#</a></h3>
+<p>Pada Gitlab anda dapat membuat banyak Runner, kami sarankan buat Runner sesuai keperluan saja. Untuk melihat daftar Runner yang telah anda buat, jalankan perintah berikut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # service gitlab_runner list
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Runtime platform                                    arch=amd64 os=freebsd pid=1113 revision=18.0.0 version=18.0.0
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Listing configured runners                          ConfigFile=/var/tmp/gitlab_runner/.gitlab-runner/config.toml
+</span></span></span><span style="display:flex;"><span><span style="color:#888">runner1234                                          Executor=shell Token=glrt-NgUu45FU3jLLOE6YbT6Hd286MQpwOjE1djNkegp0OjMKdTpncXhwcBg.01.1j0dbf347 URL=https://gitlab.com
+</span></span></span></code></pre></div><h3 id="35-opsi-flags-gitlab-runner">3.5. Opsi (flags) Gitlab Runner<a hidden class="anchor" aria-hidden="true" href="#35-opsi-flags-gitlab-runner">#</a></h3>
+<p>Perintah <code>gitlab-runner</code> memiliki banyak sekali opsi, namun opsi yang kami jelaskan di atas salah satu perintah yang sangat penting dan harus dijalankan ketika anda akan menggunakan Gitlab Runner. Berikut ini adalah daftar opsi perintah <code>gitlab-runner</code> yang dapat anda coba.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Option</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>list</td>
+          <td>List all configured runners</td>
+      </tr>
+      <tr>
+          <td>run</td>
+          <td>run multi runner service</td>
+      </tr>
+      <tr>
+          <td>register</td>
+          <td>register a new runner</td>
+      </tr>
+      <tr>
+          <td>reset-token</td>
+          <td>reset a runner&rsquo;s token</td>
+      </tr>
+      <tr>
+          <td>install</td>
+          <td>install service</td>
+      </tr>
+      <tr>
+          <td>uninstall</td>
+          <td>uninstall service</td>
+      </tr>
+      <tr>
+          <td>start</td>
+          <td>start service</td>
+      </tr>
+      <tr>
+          <td>Stop</td>
+          <td>stop service</td>
+      </tr>
+      <tr>
+          <td>restart</td>
+          <td>restart service</td>
+      </tr>
+      <tr>
+          <td>status</td>
+          <td>get status of a service</td>
+      </tr>
+      <tr>
+          <td>run-single</td>
+          <td>start single runner</td>
+      </tr>
+      <tr>
+          <td>unregister</td>
+          <td>unregister specific runner</td>
+      </tr>
+      <tr>
+          <td>verify</td>
+          <td>verify all registered runners</td>
+      </tr>
+      <tr>
+          <td>wrapper</td>
+          <td>start multi runner service wrapped with gRPC manager server</td>
+      </tr>
+      <tr>
+          <td>fleeting</td>
+          <td>manage fleeting plugins</td>
+      </tr>
+      <tr>
+          <td>artifacts-downloader</td>
+          <td>download and extract build artifacts (internal)</td>
+      </tr>
+      <tr>
+          <td>artifacts-uploader</td>
+          <td>create and upload build artifacts (internal)</td>
+      </tr>
+      <tr>
+          <td>cache-archiver</td>
+          <td>create and upload cache artifacts (internal)</td>
+      </tr>
+      <tr>
+          <td>cache-extractor</td>
+          <td>download and extract cache artifacts (internal)</td>
+      </tr>
+      <tr>
+          <td>cache-init</td>
+          <td>changed permissions for cache paths (internal)</td>
+      </tr>
+      <tr>
+          <td>health-check</td>
+          <td>check health for a specific address</td>
+      </tr>
+      <tr>
+          <td>proxy-exec</td>
+          <td>execute internal commands (internal)</td>
+      </tr>
+      <tr>
+          <td>read-logs</td>
+          <td>reads job logs from a file, used by kubernetes executor (internal)</td>
+      </tr>
+      <tr>
+          <td>help, h</td>
+          <td>Shows a list of commands or help for one command</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td>&ndash;cpuprofile value</td>
+          <td>write cpu profile to file [$CPU_PROFILE]</td>
+      </tr>
+      <tr>
+          <td>&ndash;debug</td>
+          <td>debug mode [$RUNNER_DEBUG]</td>
+      </tr>
+      <tr>
+          <td>&ndash;log-format value</td>
+          <td>Choose log format (options: runner, text, json) [$LOG_FORMAT]</td>
+      </tr>
+      <tr>
+          <td>&ndash;log-level value, -l value</td>
+          <td>Log level (options: debug, info, warn, error, fatal, panic) [$LOG_LEVEL]</td>
+      </tr>
+      <tr>
+          <td>&ndash;help, -h</td>
+          <td>show help</td>
+      </tr>
+      <tr>
+          <td>&ndash;version, -v</td>
+          <td>print the version</td>
+      </tr>
+  </tbody>
+</table>
+<p>Singkatnya, gitlab-runner adalah alat penting untuk mengelola eksekusi pekerjaan CI/CD di GitLab. Alat ini menyederhanakan pendaftaran, konfigurasi, penyebaran, dan pengelolaan GitLab Runner, sehingga Anda dapat mengotomatiskan dan mengatur proses pengembangan dan penyebaran perangkat lunak secara efisien.</p>
+<p>Dengan menggunakan contoh yang diberikan, Anda dapat mendaftarkan, mengelola, dan memverifikasi runner secara efisien, sehingga proses pengembangan hingga penerapan berjalan lancar. Baik saat menyiapkan lingkungan baru, memelihara sistem aktif, atau memecahkan masalah konektivitas, alat ini membekali Anda dengan kemampuan yang dibutuhkan untuk beradaptasi dengan tuntutan proyek yang terus berkembang.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/anonymous/">Anonymous</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 WARNET DAPURNET</span> ·     
+    <span>
+    Powered by 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">hugo</a>, <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">papermod</a>, &amp;
+        <a href="https://github.com/pmichaillat/hugo-website/" rel="noopener" target="_blank">hugo-website</a>.
+    </span>
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Tutorial FreeBSD - Panduan Instalasi PowerDNS | WARNET DAPURNET</title>
+<meta name="keywords" content="DNSServer">
+<meta name="description" content="Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C&#43;&#43; dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja">
+<meta name="author" content="Iwan Setiawan">
+<link rel="canonical" href="http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.977eaf2e691fe9d6783238f3ea60f3c0affcf333092baaee887438624edc50f3.css" integrity="sha256-l36vLmkf6dZ4Mjjz6mDzwK/88zMJK6ruiHQ4Yk7cUPM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/">
+  <meta property="og:site_name" content="WARNET DAPURNET">
+  <meta property="og:title" content="Tutorial FreeBSD - Panduan Instalasi PowerDNS">
+  <meta property="og:description" content="Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C&#43;&#43; dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja">
+  <meta property="og:locale" content="id-ID">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="dnsserver">
+    <meta property="article:published_time" content="2025-05-24T08:57:45+08:00">
+    <meta property="article:modified_time" content="2025-05-24T08:57:45+08:00">
+    <meta property="article:tag" content="DNSServer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tutorial FreeBSD - Panduan Instalasi PowerDNS">
+<meta name="twitter:description" content="Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C&#43;&#43; dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Courses",
+      "item": "http://localhost:1313/dnsserver/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Tutorial FreeBSD - Panduan Instalasi PowerDNS",
+      "item": "http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Tutorial FreeBSD - Panduan Instalasi PowerDNS",
+  "name": "Tutorial FreeBSD - Panduan Instalasi PowerDNS",
+  "description": "Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C++ dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja",
+  "keywords": [
+    "DNSServer"
+  ],
+  "articleBody": "Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C++ dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja. Authoritative server akan menjawab pertanyaan seputar authoritative domain, yaitu name server. Sementara itu, fungsi Recursor akan meminta name server lain di Internet untuk mengetahui perihal query yang ditanyakan.\nPenggunaan PowerDNS dapat menggunakan DNS server lain seperti Bind untuk rekursi atau menggunakan PowerDNS Recursor (pdns_recursor) yang dijalankan secara terpisah. PowerDNS yang ditulis oleh Bert Hubert merupakan produk dari perusahaan Belanda bernama powerdns.com. B.V. Saat ini komunitas PowerDNS telah menyebar luas dengan banyaknya kontributor dari komunitas Open Source.\nBagi Anda yang menggunakan sistem Unix seperti FreeBSD, OpenBSD dan lainnya, PowerDNS merupakan solusi DNS server terbaik yang menawarkan kesederhanaan, kestabilan dan kehandalan. Alih-alih menggunakan berkas teks, PowerDNS menggunakan backend basis data untuk menyimpan datanya. Server basis data yang didukung oleh PowerDNS meliputi MariaDB, MySQL, PostgreSQL, dan SQLite3.\nDalam posting ini, saya akan menunjukkan cara menginstal PowerDNS dengan server MySQL sebagai backend di FreeBSD 13.3. Saya juga membahas penggunaan pdnsutil untuk mengelola zona dan membuat nama domain, serta dig untuk memeriksa koneksi DNS dan memecahkan masalah server DNS. 1. Spesifikasi sistem OS: FreeBSD 13.3 Hostname: ns3 IP server: 192.168.5.2 MySQL server version: mysql80-server CPU: AMD Phenom II X4 965 3400 MHz 2. Setting up FQDN FQDN (Fully Qualified Domain Name) adalah nama yang secara unik mengidentifikasi host di Internet. FQDN harus menyertakan nama domain induk. Fully Qualified Domain Name dalam DNS harus diakhiri dengan titik yang menunjukkan nama domain root. Saat Anda mendelegasikan nama domain, name server atau NS akan dianggap sebagai FQDN, yang merupakan nama domain berkualifikasi penuh dengan titik di bagian akhir.\nSebelum Anda menetapkan FQDN pada server FreeBSD, periksa nama FQDN yang sedang digunakan dengan perintah berikut.\nroot@ns3:~ # hostname ns5.unixwinbsd.com Pada perintah di atas kita dapat melihat, Hostname aktif saat ini adalah `\"ns5\"` dan domainnya adalah `\"unixwinbsd.com\"`. Jika Anda ingin membuat nama FQDN permanen, di FreeBBSD nama FQDN ditempatkan di berkas rc.conf. Sekarang jalankan perintah berikut untuk membuat konfigurasi FQDN permanen di FreeBSD. ```console root@ns3:~ # sysrc hostname=\"ns3.datainchi.com\" hostname: ns3.datainchi.com -\u003e ns3.datainchi.com Setelah itu, gunakan editor \"ee\", buka file /etc/hosts, dan ketik skrip di bawah ini.\nroot@ns3:~ # ee /etc/hosts 127.0.0.1\tlocalhost localhost.datainchi.com 192.168.5.2\tns3 ns3.datainchi.com Berikutnya, untuk memverifikasi nama domain pada sistem FreeBSD Anda, jalankan perintah berikut.\nroot@ns3:~ # hostname -d root@ns3:~ # hostname -f 3. Instal PowerDNS Setelah Anda selesai mengonfigurasi domain FQDN yang akan digunakan pada server FreeBSD Anda, lanjutkan ke langkah berikutnya, yaitu menginstal PowerDNS. Di FreeBSD, repositori PowerDNS tersedia di pengelola paket PKG dan Ports. Anda dapat menginstal PowerDNS dengan salah satu cara berikut. Dalam artikel ini, kami akan menginstal PowerDNS dengan sistem ports.\nAnda dapat menginstal PowerDNS dengan dua cara berbeda: melalui pengelola paket PKG dan Ports. Dalam contoh ini, Anda akan menginstal PowerDNS melalui PKG dari repositori FreeBSD. Untuk menginstal PowerDNS di FreeBSD, ikuti Panduan ini.\nroot@ns3:~ # cd /usr/ports/dns/powerdns root@ns3:/usr/ports/dns/powerdns # make install clean Jangan lupa, instal juga powerdns-recursor, untuk mengaktifkan PowerDNS Recursor.\nroot@ns3:/usr/ports/dns/powerdns # cd /usr/ports/dns/powerdns-recursor root@ns3:/usr/ports/dns/powerdns-recursor # make install clean Anda juga menginstal utilitas dig, untuk memeriksa koneksi PowerDNS.\nroot@ns3:~ # pkg install -y bind-tools Jika proses instalasi selesai, lanjutkan dengan mengaktifkan PowerDNS, dengan megnetikkan skrip di bawah ini di file /etc/rc.conf.\nroot@ns3:~ # ee /etc/rc.conf pdns_enable=\"YES\" pdns_conf=\"/usr/local/etc/pdns/pdns.conf\" pdns_recursor_enable=\"YES\" pdns_recursor_conf=\"/usr/local/etc/pdns/recursor.conf\" 4. Buat server PowerDNS Database Perlu diperhatikan, PowerDNS menggunakan server database untuk menyimpan file zona. Dalam contoh ini, kami akan menggunakan database MySQL sebagai backend PowerDNS. Namun, dalam artikel ini, kami tidak membahas cara menginstal MySQL, kami hanya akan berasumsi bahwa server FreeBSD Anda telah terinstal server MySQL dan berjalan normal. Jadi, kami hanya membuat database untuk PowerDNS. Ikuti skrip perintah di bawah ini.\nroot@ns3:~ # mysql -u root -p Enter password: Welcome to the MySQL monitor. Commands end with ; or \\g. Your MySQL connection id is 11 Server version: 8.0.35 Source distribution Copyright (c) 2000, 2023, Oracle and/or its affiliates. Oracle is a registered trademark of Oracle Corporation and/or its affiliates. Other names may be trademarks of their respective owners. Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement. root@localhost [(none)]\u003e CREATE DATABASE pdns; Query OK, 1 row affected (0.25 sec) root@localhost [(none)]\u003e CREATE USER userpdns@localhost IDENTIFIED BY 'router123'; Query OK, 0 rows affected (0.12 sec) root@localhost [(none)]\u003e GRANT ALL PRIVILEGES ON pdns.* TO userpdns@localhost; Query OK, 0 rows affected (0.05 sec) root@localhost [(none)]\u003e FLUSH PRIVILEGES; Query OK, 0 rows affected (0.04 sec) root@localhost [(none)]\u003e quit; Bye root@ns3:~ # Pada FreeBSD, berkas skema MySQL disimpan di /usr/local/share/doc/powerdns. Jalankan berkas skema dengan MySQL, seperti pada contoh di bawah ini.\nroot@ns3:~ # mysql -u userpdns -p pdns \u003c /usr/local/share/doc/powerdns/schema.mysql.sql Anda dapat memverifikasi skema basis data MySQL yang akan digunakan untuk menyimpan zona PowerDNS.\nroot@ns3:~ # mysqlshow -u userpdns -p pdns Enter password: Database: pdns +----------------+ | Tables | +----------------+ | comments | | cryptokeys | | domainmetadata | | domains | | records | | supermasters | | tsigkeys | +----------------+ 5. Menyiapkan PowerDNS Langkah berikutnya, Anda harus mengonfigurasi PowerDNS. File konfigurasi untuk konfigurasi tersebut berada di /usr/local/etc/pdns. Buka file pdns.conf dan tambahkan skrip MySQL seperti pada contoh di bawah ini.\nroot@ns3:~ # cd /usr/local/etc/pdns root@ns3:/usr/local/etc/pdns # ee pdns.conf allow-axfr-ips=0.0.0.0/0 allow-recursion=0.0.0.0/0 # cache-ttl\tSeconds to store packets in the PacketCache cache-ttl=20 config-dir=/usr/local/etc/pdns control-console=no daemon=yes default-soa-name=ns3.datainchi.com # default-ttl\tSeconds a result is valid if not set otherwise default-ttl=3600 guardian=no launch=gmysql # gmysql parameters gmysql-host=127.0.0.1 gmysql-port=3306 gmysql-dbname=pdns gmysql-user=userpdns gmysql-password=router123 gmysql-dnssec=yes local-address=127.0.0.1, 192.168.5.2 # local-ipv6= local-port=5353 logfile=/var/log/pdns/pdns.log loglevel=9 master=yes max-queue-length=5000 max-tcp-connections=10 recursor=127.0.0.1 setgid=pdns setuid=pdns slave=yes slave-cycle-interval=600 smtpredirector= soa-expire-default=604800 soa-minimum-ttl=3600 soa-refresh-default=10800 soa-retry-default=3600 soa-serial-offset=0 socket-dir=/var/run/pdns # use-logfile\tUse a log file use-logfile=yes version-string=powerdns webserver=yes webserver-address=192.168.5.2 # webserver-password= webserver-port=8081 webserver-print-arguments=yes Setelah itu, Anda mengubah skrip file `recursor.conf`. ```console root@ns3:/usr/local/etc/pdns # ee recursor.conf allow-from=127.0.0.0/8, 10.0.0.0/8 hint-file=/usr/local/etc/pdns/root.zone local-address=127.0.0.1 local-port=53 max-tcp-clients=128 setgid=pdns setuid=pdns_recursor socket-dir=/var/run/pdns version-string=PowerDNS Recursor Setelah itu, Anda menjalankan perintah pdns_server, untuk menghubungkan PowerDNS ke server MySQL dan memverifikasi basis data yang akan digunakan PowerDNS.\nroot@ns3:/usr/local/etc/pdns # pdns_server --daemon=no --guardian=no --loglevel=9 Buat berkas log PowerDNS.\nroot@ns3:~ # mkdir -p /var/log/pdns root@ns3:~ # touch /var/log/pdns/pdns.log root@ns3:~ # touch /var/log/pdns/pdns_recursor.log Aktifkan berkas log di file /etc/syslog.conf.\nroot@ns3:~ # ee /etc/syslog.conf !pdns *.* /var/log/pdns/pdns.log !pdns_recursor *.* /var/log/pdns/pdns_recursor.log Berikutnya, atur rotasi berkas log, ketik skrip di bawah ini ke dalam berkas /etc/newsyslog.conf.\nroot@ns3:~ # ee /etc/newsyslog.conf /var/log/pdns/*.log\t644 7\t*\t@T00 GJC Jalankan berkas log PowerDNS. ```console root@ns3:~ # service syslogd restart Stopping syslogd. Waiting for PIDS: 4712. Starting syslogd. root@ns3:~ # service newsyslog restart Creating and/or trimming log files. Setelah proses instalasi selesai, PoerDNS secara otomatis membuat pengguna dan grup baru yang disebut \"pdns\". Jalankan perintah chown untuk menetapkan pengguna dan grup ke PowerDNS.\nroot@ns3:~ # chown -R pdns:pdns /var/run/pdns root@ns3:~ # chown -R pdns:pdns /usr/local/etc/pdns/pdns.conf root@ns3:~ # chown -R pdns_recursor:pdns /usr/local/etc/pdns/recursor.conf root@ns3:~ # chown -R pdns:pdns /var/log/pdns Langkah berikutnya, jalankan PowerDNS dengan perintah layanan.\nroot@ns3:~ # service pdns-recursor restart root@ns3:~ # service pdns restart Untuk memeriksa apakah port 53 terbuka atau tidak, Anda dapat memeriksanya dengan perintah berikut.\nroot@ns3:~ # sockstat -4 -p 53 6. Membuat forward zone Sebelum Anda membuat “forward zone”, unduh file root.zone terlebih dahulu. Ikuti contoh di bawah ini.\nroot@ns3:/usr/local/etc/pdns # wget ftp://ftp.rs.internic.net/domain/root.zone.gz \u0026\u0026 gunzip root.zone.gz Setelah server PowerDNS aktif dan berjalan normal di FreeBSD, langkah selanjutnya adalah membuat name server, yang dapat dilakukan dengan perintah pdnsutil. Pdnsutil adalah baris perintah untuk mengelola rekaman PowerDNS dan mengendalikan perintah DNSSEC.\nroot@ns3:~ # pdnsutil create-zone datainchi.com ns3.datainchi.com root@ns3:~ # pdnsutil add-record datainchi.com ns3 A 192.168.5.2 root@ns3:~ # pdnsutil list-zone datainchi.com Langkah terakhir, Terakhir, jalankan perintah dig untuk memeriksa catatan A dan SOA untuk server nama ns3.datainchi.com.\nroot@ns3:~ # dig ns3.datainchi.com @127.0.0.1 root@ns3:~ # dig SOA ns3.datainchi.com @127.0.0.1 Kita lanjutkan dengan menjalankan perintah di bawah ini untuk memeriksa konfigurasi zona pada server PowerDNS Anda. Kemudian, verifikasi daftar rekaman DNS di zona datainchi.com.\nroot@ns3:~ # pdnsutil check-all-zones root@ns3:~ # pdnsutil list-zone datainchi.com 7. Membuat rekaman PTR (PTR record) Langkah terakhir adalah membuat zona terbalik atau rekaman PTR yang akan menangani penerjemahan alamat IP ke nama domain. Bagian ini adalah bagian terpenting dari konfigurasi PowerDNS. Jalankan perintah di bawah ini untuk membuat zona terbalik baru.\nroot@ns3:/usr/local/etc/pdns # pdnsutil create-zone 5.168.192.in-addr.arpa ns3.datainchi.com Tambahkan catatan untuk nama server ns3.datainchi.com ke alamat IP 192.168.5.2.\nroot@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa ns3 A 192.168.5.2 Berikutnya, jalankan perintah di bawah ini untuk membuat catatan PTR baru untuk setiap nama domain Anda.\nroot@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 80 PTR ns3.datainchi.com root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 25 PTR ns3.datainchi.com root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 35 PTR ns3.datainchi.com root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 30 PTR ns3.datainchi.com Domain Name System (DNS) sangatlah rentan. karena jika DNS sedang down maka layanan website Anda yang menggunakan DNS secara otomatis tidak dapat digunakan. PowerDNS memberikan solusi yang tepat, dengan dukungan database backend menjadikan server DNS ini sebagai pilihan utama bagi Anda yang sedang merancang server DNS untuk kebutuhan website yang handal.\n",
+  "wordCount" : "1465",
+  "inLanguage": "en",
+  "datePublished": "2025-05-24T08:57:45+08:00",
+  "dateModified": "2025-05-24T08:57:45+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Iwan Setiawan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WARNET DAPURNET",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="WARNET DAPURNET">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">WARNET DAPURNET</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/dnsserver/" title="DNSServer">
+                    <span>DNSServer</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/webhttps/" title="WebHTTPS">
+                    <span>WebHTTPS</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/anonymous/" title="Anonymous">
+                    <span>Anonymous</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/database/" title="DataBase">
+                    <span>DataBase</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://unixwinbsd.site" title="Blog">
+                    <span>Blog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Tutorial FreeBSD - Panduan Instalasi PowerDNS
+    </h1>
+    <div class="post-meta"><span title='2025-05-24 08:57:45 +0800 +0800'>May 2025</span>&nbsp;&middot;&nbsp;Iwan Setiawan&nbsp;&middot;&nbsp;<a href="https://github.com/unixwinbsd/unixwinbsd.github.io" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-spesifikasi-sistem">1. Spesifikasi sistem</a></li>
+    <li><a href="#2-setting-up-fqdn">2. Setting up FQDN</a></li>
+    <li><a href="#3-instal-powerdns">3. Instal PowerDNS</a></li>
+    <li><a href="#4-buat-server-powerdns-database">4. Buat server PowerDNS Database</a></li>
+    <li><a href="#5-menyiapkan-powerdns">5. Menyiapkan PowerDNS</a></li>
+    <li><a href="#6-membuat-forward-zone">6. Membuat forward zone</a></li>
+    <li><a href="#7-membuat-rekaman-ptr-ptr-record">7. Membuat rekaman PTR (PTR record)</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C++ dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja. Authoritative server akan menjawab pertanyaan seputar authoritative domain, yaitu name server. Sementara itu, fungsi Recursor akan meminta name server lain di Internet untuk mengetahui perihal query yang ditanyakan.</p>
+<p>Penggunaan PowerDNS dapat menggunakan DNS server lain seperti Bind untuk rekursi atau menggunakan PowerDNS Recursor (pdns_recursor) yang dijalankan secara terpisah. PowerDNS yang ditulis oleh Bert Hubert merupakan produk dari perusahaan Belanda bernama powerdns.com. B.V. Saat ini komunitas PowerDNS telah menyebar luas dengan banyaknya kontributor dari komunitas Open Source.</p>
+<p>Bagi Anda yang menggunakan sistem Unix seperti FreeBSD, OpenBSD dan lainnya, PowerDNS merupakan solusi DNS server terbaik yang menawarkan kesederhanaan, kestabilan dan kehandalan. Alih-alih menggunakan berkas teks, PowerDNS menggunakan backend basis data untuk menyimpan datanya. Server basis data yang didukung oleh PowerDNS meliputi MariaDB, MySQL, PostgreSQL, dan SQLite3.</p>
+<p>Dalam posting ini, saya akan menunjukkan cara menginstal PowerDNS dengan server MySQL sebagai backend di FreeBSD 13.3. Saya juga membahas penggunaan pdnsutil untuk mengelola zona dan membuat nama domain, serta dig untuk memeriksa koneksi DNS dan memecahkan masalah server DNS.
+<br><br/></p>
+<p><img alt="freebsd powerDNS Install" loading="lazy" src="https://pbs.twimg.com/media/GsQBTgQaMAAFD_y?format=jpg&name=small"></p>
+<h2 id="1-spesifikasi-sistem">1. Spesifikasi sistem<a hidden class="anchor" aria-hidden="true" href="#1-spesifikasi-sistem">#</a></h2>
+<ul>
+<li>OS: FreeBSD 13.3</li>
+<li>Hostname: ns3</li>
+<li>IP server: 192.168.5.2</li>
+<li>MySQL server version: mysql80-server</li>
+<li>CPU: AMD Phenom II X4 965 3400 MHz
+<br><br/></li>
+</ul>
+<h2 id="2-setting-up-fqdn">2. Setting up FQDN<a hidden class="anchor" aria-hidden="true" href="#2-setting-up-fqdn">#</a></h2>
+<p>FQDN (Fully Qualified Domain Name) adalah nama yang secara unik mengidentifikasi host di Internet. FQDN harus menyertakan nama domain induk. Fully Qualified Domain Name dalam DNS harus diakhiri dengan titik yang menunjukkan nama domain root. Saat Anda mendelegasikan nama domain, name server atau NS akan dianggap sebagai FQDN, yang merupakan nama domain berkualifikasi penuh dengan titik di bagian akhir.</p>
+<p>Sebelum Anda menetapkan FQDN pada server FreeBSD, periksa nama FQDN yang sedang digunakan dengan perintah berikut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # hostname
+</span></span></span><span style="display:flex;"><span><span style="color:#888">ns5.unixwinbsd.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Pada perintah di atas kita dapat melihat, Hostname aktif saat ini adalah `&#34;ns5&#34;` dan domainnya adalah `&#34;unixwinbsd.com&#34;`.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Jika Anda ingin membuat nama FQDN permanen, di FreeBBSD nama FQDN ditempatkan di berkas rc.conf. Sekarang jalankan perintah berikut untuk membuat konfigurasi FQDN permanen di FreeBSD.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">```console
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # sysrc hostname=&#34;ns3.datainchi.com&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">hostname: ns3.datainchi.com -&gt; ns3.datainchi.com
+</span></span></span></code></pre></div><p>Setelah itu, gunakan editor <code>&quot;ee&quot;</code>, buka file <code>/etc/hosts</code>, dan ketik skrip di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # ee /etc/hosts
+</span></span></span><span style="display:flex;"><span><span style="color:#888">127.0.0.1		        localhost localhost.datainchi.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888">192.168.5.2		ns3 ns3.datainchi.com
+</span></span></span></code></pre></div><p>Berikutnya, untuk memverifikasi nama domain pada sistem FreeBSD Anda, jalankan perintah berikut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # hostname -d
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # hostname -f
+</span></span></span></code></pre></div><h2 id="3-instal-powerdns">3. Instal PowerDNS<a hidden class="anchor" aria-hidden="true" href="#3-instal-powerdns">#</a></h2>
+<p>Setelah Anda selesai mengonfigurasi domain FQDN yang akan digunakan pada server FreeBSD Anda, lanjutkan ke langkah berikutnya, yaitu menginstal PowerDNS. Di FreeBSD, repositori PowerDNS tersedia di pengelola paket PKG dan Ports. Anda dapat menginstal PowerDNS dengan salah satu cara berikut. Dalam artikel ini, kami akan menginstal PowerDNS dengan sistem ports.</p>
+<p>Anda dapat menginstal PowerDNS dengan dua cara berbeda: melalui pengelola paket PKG dan Ports. Dalam contoh ini, Anda akan menginstal PowerDNS melalui PKG dari repositori FreeBSD. Untuk menginstal PowerDNS di FreeBSD, ikuti Panduan ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # cd /usr/ports/dns/powerdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/ports/dns/powerdns # make install clean
+</span></span></span></code></pre></div><p>Jangan lupa, instal juga powerdns-recursor, untuk mengaktifkan PowerDNS Recursor.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/ports/dns/powerdns # cd /usr/ports/dns/powerdns-recursor
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/ports/dns/powerdns-recursor # make install clean
+</span></span></span></code></pre></div><p>Anda juga menginstal utilitas dig, untuk memeriksa koneksi PowerDNS.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # pkg install -y bind-tools
+</span></span></span></code></pre></div><p>Jika proses instalasi selesai, lanjutkan dengan mengaktifkan PowerDNS, dengan megnetikkan skrip di bawah ini di file <code>/etc/rc.conf</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # ee /etc/rc.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">pdns_enable=&#34;YES&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">pdns_conf=&#34;/usr/local/etc/pdns/pdns.conf&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">pdns_recursor_enable=&#34;YES&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">pdns_recursor_conf=&#34;/usr/local/etc/pdns/recursor.conf&#34;
+</span></span></span></code></pre></div><h2 id="4-buat-server-powerdns-database">4. Buat server PowerDNS Database<a hidden class="anchor" aria-hidden="true" href="#4-buat-server-powerdns-database">#</a></h2>
+<p>Perlu diperhatikan, PowerDNS menggunakan server database untuk menyimpan file zona. Dalam contoh ini, kami akan menggunakan database MySQL sebagai backend PowerDNS. Namun, dalam artikel ini, kami tidak membahas cara menginstal MySQL, kami hanya akan berasumsi bahwa server FreeBSD Anda telah terinstal server MySQL dan berjalan normal. Jadi, kami hanya membuat database untuk PowerDNS. Ikuti skrip perintah di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # mysql -u root -p
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Enter password:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Welcome to the MySQL monitor.  Commands end with ; or \g.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Your MySQL connection id is 11
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Server version: 8.0.35 Source distribution
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Oracle is a registered trademark of Oracle Corporation and/or its
+</span></span></span><span style="display:flex;"><span><span style="color:#888">affiliates. Other names may be trademarks of their respective
+</span></span></span><span style="display:flex;"><span><span style="color:#888">owners.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">Type &#39;help;&#39; or &#39;\h&#39; for help. Type &#39;\c&#39; to clear the current input statement.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [(none)]&gt; CREATE DATABASE pdns;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Query OK, 1 row affected (0.25 sec)
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [(none)]&gt; CREATE USER userpdns@localhost IDENTIFIED BY &#39;router123&#39;;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Query OK, 0 rows affected (0.12 sec)
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [(none)]&gt; GRANT ALL PRIVILEGES ON pdns.* TO userpdns@localhost;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Query OK, 0 rows affected (0.05 sec)
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [(none)]&gt; FLUSH PRIVILEGES;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Query OK, 0 rows affected (0.04 sec)
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">root@localhost [(none)]&gt; quit;
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Bye
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ #
+</span></span></span></code></pre></div><p>Pada FreeBSD, berkas skema MySQL disimpan di /usr/local/share/doc/powerdns. Jalankan berkas skema dengan MySQL, seperti pada contoh di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # mysql -u userpdns -p pdns &lt; /usr/local/share/doc/powerdns/schema.mysql.sql
+</span></span></span></code></pre></div><p>Anda dapat memverifikasi skema basis data MySQL yang akan digunakan untuk menyimpan zona PowerDNS.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # mysqlshow -u userpdns -p pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Enter password:
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Database: pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">+----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#888">|     Tables     |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">+----------------+
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| comments       |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| cryptokeys     |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| domainmetadata |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| domains        |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| records        |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| supermasters   |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">| tsigkeys       |
+</span></span></span><span style="display:flex;"><span><span style="color:#888">+----------------+
+</span></span></span></code></pre></div><h2 id="5-menyiapkan-powerdns">5. Menyiapkan PowerDNS<a hidden class="anchor" aria-hidden="true" href="#5-menyiapkan-powerdns">#</a></h2>
+<p>Langkah berikutnya, Anda harus mengonfigurasi PowerDNS. File konfigurasi untuk konfigurasi tersebut berada di <code>/usr/local/etc/pdns</code>. Buka file <code>pdns.conf</code> dan tambahkan skrip MySQL seperti pada contoh di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # cd /usr/local/etc/pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # ee pdns.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">allow-axfr-ips=0.0.0.0/0
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">allow-recursion=0.0.0.0/0
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#555">#</span> cache-ttl	Seconds to store packets in the PacketCache
+</span></span><span style="display:flex;"><span><span style="color:#888">cache-ttl=20
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">config-dir=/usr/local/etc/pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">control-console=no
+</span></span></span><span style="display:flex;"><span><span style="color:#888">daemon=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888">default-soa-name=ns3.datainchi.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#555">#</span> default-ttl	Seconds a result is valid <span style="color:#00a">if</span> not <span style="color:#0aa">set</span> otherwise
+</span></span><span style="display:flex;"><span><span style="color:#888">default-ttl=3600
+</span></span></span><span style="display:flex;"><span><span style="color:#888">guardian=no
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">launch=gmysql
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#555">#</span> gmysql parameters
+</span></span><span style="display:flex;"><span><span style="color:#888">gmysql-host=127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gmysql-port=3306
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gmysql-dbname=pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gmysql-user=userpdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gmysql-password=router123
+</span></span></span><span style="display:flex;"><span><span style="color:#888">gmysql-dnssec=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">local-address=127.0.0.1, 192.168.5.2
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#555">#</span> local-ipv6=
+</span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">local-port=5353
+</span></span></span><span style="display:flex;"><span><span style="color:#888">logfile=/var/log/pdns/pdns.log
+</span></span></span><span style="display:flex;"><span><span style="color:#888">loglevel=9
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">master=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888">max-queue-length=5000
+</span></span></span><span style="display:flex;"><span><span style="color:#888">max-tcp-connections=10
+</span></span></span><span style="display:flex;"><span><span style="color:#888">recursor=127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">setgid=pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">setuid=pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">slave=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888">slave-cycle-interval=600
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">smtpredirector=
+</span></span></span><span style="display:flex;"><span><span style="color:#888">soa-expire-default=604800
+</span></span></span><span style="display:flex;"><span><span style="color:#888">soa-minimum-ttl=3600
+</span></span></span><span style="display:flex;"><span><span style="color:#888">soa-refresh-default=10800
+</span></span></span><span style="display:flex;"><span><span style="color:#888">soa-retry-default=3600
+</span></span></span><span style="display:flex;"><span><span style="color:#888">soa-serial-offset=0
+</span></span></span><span style="display:flex;"><span><span style="color:#888">socket-dir=/var/run/pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#555">#</span> use-logfile	Use a log file
+</span></span><span style="display:flex;"><span><span style="color:#888">use-logfile=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">version-string=powerdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">webserver=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888">webserver-address=192.168.5.2
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#555">#</span> webserver-password=
+</span></span><span style="display:flex;"><span><span style="color:#888">webserver-port=8081
+</span></span></span><span style="display:flex;"><span><span style="color:#888">webserver-print-arguments=yes
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Setelah itu, Anda mengubah skrip file `recursor.conf`.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">```console
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # ee recursor.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">allow-from=127.0.0.0/8, 10.0.0.0/8
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">hint-file=/usr/local/etc/pdns/root.zone
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">local-address=127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#888">local-port=53
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">max-tcp-clients=128
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">setgid=pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">setuid=pdns_recursor
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">socket-dir=/var/run/pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">version-string=PowerDNS Recursor
+</span></span></span></code></pre></div><p>Setelah itu, Anda menjalankan perintah pdns_server, untuk menghubungkan PowerDNS ke server MySQL dan memverifikasi basis data yang akan digunakan PowerDNS.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdns_server --daemon=no --guardian=no --loglevel=9
+</span></span></span></code></pre></div><p>Buat berkas log PowerDNS.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # mkdir -p /var/log/pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # touch /var/log/pdns/pdns.log
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # touch /var/log/pdns/pdns_recursor.log
+</span></span></span></code></pre></div><p>Aktifkan berkas log di file <code>/etc/syslog.conf</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # ee /etc/syslog.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">!pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">*.*      /var/log/pdns/pdns.log
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">!pdns_recursor
+</span></span></span><span style="display:flex;"><span><span style="color:#888">*.*      /var/log/pdns/pdns_recursor.log
+</span></span></span></code></pre></div><p>Berikutnya, atur rotasi berkas log, ketik skrip di bawah ini ke dalam berkas <code>/etc/newsyslog.conf</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # ee /etc/newsyslog.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">/var/log/pdns/*.log			644  7	   *	@T00  GJC
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Jalankan berkas log PowerDNS.
+</span></span></span><span style="display:flex;"><span><span style="color:#888"></span><span style="color:#f00;background-color:#faa">
+</span></span></span><span style="display:flex;"><span><span style="color:#f00;background-color:#faa"></span><span style="color:#888">```console
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # service syslogd restart
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Stopping syslogd.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Waiting for PIDS: 4712.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Starting syslogd.
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # service newsyslog restart
+</span></span></span><span style="display:flex;"><span><span style="color:#888">Creating and/or trimming log files.
+</span></span></span></code></pre></div><p>Setelah proses instalasi selesai, PoerDNS secara otomatis membuat pengguna dan grup baru yang disebut <code>&quot;pdns&quot;</code>. Jalankan perintah chown untuk menetapkan pengguna dan grup ke PowerDNS.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # chown -R pdns:pdns /var/run/pdns
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # chown -R pdns:pdns /usr/local/etc/pdns/pdns.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # chown -R pdns_recursor:pdns /usr/local/etc/pdns/recursor.conf
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # chown -R pdns:pdns /var/log/pdns
+</span></span></span></code></pre></div><p>Langkah berikutnya, jalankan PowerDNS dengan perintah layanan.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # service pdns-recursor restart
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # service pdns restart
+</span></span></span></code></pre></div><p>Untuk memeriksa apakah port 53 terbuka atau tidak, Anda dapat memeriksanya dengan perintah berikut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # sockstat -4 -p 53
+</span></span></span></code></pre></div><h2 id="6-membuat-forward-zone">6. Membuat forward zone<a hidden class="anchor" aria-hidden="true" href="#6-membuat-forward-zone">#</a></h2>
+<p>Sebelum Anda membuat &ldquo;forward zone&rdquo;, unduh file <code>root.zone</code> terlebih dahulu. Ikuti contoh di bawah ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # wget ftp://ftp.rs.internic.net/domain/root.zone.gz &amp;&amp; gunzip root.zone.gz
+</span></span></span></code></pre></div><p>Setelah server PowerDNS aktif dan berjalan normal di FreeBSD, langkah selanjutnya adalah membuat name server, yang dapat dilakukan dengan perintah pdnsutil. Pdnsutil adalah baris perintah untuk mengelola rekaman PowerDNS dan mengendalikan perintah DNSSEC.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # pdnsutil create-zone datainchi.com ns3.datainchi.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # pdnsutil add-record datainchi.com ns3 A 192.168.5.2
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # pdnsutil list-zone datainchi.com
+</span></span></span></code></pre></div><p>Langkah terakhir, Terakhir, jalankan perintah dig untuk memeriksa catatan A dan SOA untuk server nama <code>ns3.datainchi.com</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # dig ns3.datainchi.com @127.0.0.1
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # dig SOA ns3.datainchi.com @127.0.0.1
+</span></span></span></code></pre></div><p>Kita lanjutkan dengan menjalankan perintah di bawah ini untuk memeriksa konfigurasi zona pada server PowerDNS Anda. Kemudian, verifikasi daftar rekaman DNS di zona datainchi.com.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # pdnsutil check-all-zones
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:~ # pdnsutil list-zone datainchi.com
+</span></span></span></code></pre></div><h2 id="7-membuat-rekaman-ptr-ptr-record">7. Membuat rekaman PTR (PTR record)<a hidden class="anchor" aria-hidden="true" href="#7-membuat-rekaman-ptr-ptr-record">#</a></h2>
+<p>Langkah terakhir adalah membuat zona terbalik atau rekaman PTR yang akan menangani penerjemahan alamat IP ke nama domain. Bagian ini adalah bagian terpenting dari konfigurasi PowerDNS. Jalankan perintah di bawah ini untuk membuat zona terbalik baru.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdnsutil create-zone 5.168.192.in-addr.arpa ns3.datainchi.com
+</span></span></span></code></pre></div><p>Tambahkan catatan untuk nama server ns3.datainchi.com ke alamat IP 192.168.5.2.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa ns3 A 192.168.5.2
+</span></span></span></code></pre></div><p>Berikutnya, jalankan perintah di bawah ini untuk membuat catatan PTR baru untuk setiap nama domain Anda.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 80 PTR ns3.datainchi.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 25 PTR ns3.datainchi.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 35 PTR ns3.datainchi.com
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns3:/usr/local/etc/pdns # pdnsutil add-record 5.168.192.in-addr.arpa 30 PTR ns3.datainchi.com
+</span></span></span></code></pre></div><p>Domain Name System (DNS) sangatlah rentan. karena jika DNS sedang down maka layanan website Anda yang menggunakan DNS secara otomatis tidak dapat digunakan. PowerDNS memberikan solusi yang tepat, dengan dukungan database backend menjadikan server DNS ini sebagai pilihan utama bagi Anda yang sedang merancang server DNS untuk kebutuhan website yang handal.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/dnsserver/">DNSServer</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 WARNET DAPURNET</span> ·     
+    <span>
+    Powered by 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">hugo</a>, <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">papermod</a>, &amp;
+        <a href="https://github.com/pmichaillat/hugo-website/" rel="noopener" target="_blank">hugo-website</a>.
+    </span>
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

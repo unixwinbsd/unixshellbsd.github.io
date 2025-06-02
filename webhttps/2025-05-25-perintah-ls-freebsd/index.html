@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Cara Menggunakan Perintah ls di FreeBSD dengan Contoh | WARNET DAPURNET</title>
+<meta name="keywords" content="WebHTTPS">
+<meta name="description" content="Di FreeBSD, perintah ls merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls">
+<meta name="author" content="Iwan Setiawan">
+<link rel="canonical" href="http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.977eaf2e691fe9d6783238f3ea60f3c0affcf333092baaee887438624edc50f3.css" integrity="sha256-l36vLmkf6dZ4Mjjz6mDzwK/88zMJK6ruiHQ4Yk7cUPM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/">
+  <meta property="og:site_name" content="WARNET DAPURNET">
+  <meta property="og:title" content="Cara Menggunakan Perintah ls di FreeBSD dengan Contoh">
+  <meta property="og:description" content="Di FreeBSD, perintah ls merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls">
+  <meta property="og:locale" content="id-ID">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="webhttps">
+    <meta property="article:published_time" content="2025-05-25T12:45:15+08:00">
+    <meta property="article:modified_time" content="2025-05-25T12:45:15+08:00">
+    <meta property="article:tag" content="WebHTTPS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Cara Menggunakan Perintah ls di FreeBSD dengan Contoh">
+<meta name="twitter:description" content="Di FreeBSD, perintah ls merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Data",
+      "item": "http://localhost:1313/webhttps/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Cara Menggunakan Perintah ls di FreeBSD dengan Contoh",
+      "item": "http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cara Menggunakan Perintah ls di FreeBSD dengan Contoh",
+  "name": "Cara Menggunakan Perintah ls di FreeBSD dengan Contoh",
+  "description": "Di FreeBSD, perintah ls merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls",
+  "keywords": [
+    "WebHTTPS"
+  ],
+  "articleBody": "Di FreeBSD, perintah \"ls\" merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls. Perintah ini dapat digunakan oleh pengguna biasa maupun administrator sistem.\nKemampuan untuk melihat file apa saja yang ada di dalam direktori membuat ls begitu penting. Perintah ini akan sering digunakan untuk menampilkan isi direktori. Meskipun ini bukan perintah yang rumit, perintah ini dilengkapi dengan sejumlah opsi untuk mencantumkan file beserta informasi tambahan. Meskipun ls selalu cukup untuk mencantumkan isi, Anda mungkin akan menemukan beberapa opsi ini sangat berguna.\nA. Opsi (flags) Perintah ls di FreeBSD Perintah ls di FreeBSD, memiliki sintaks dasar sebagai berikut:\nls [ Options ] [File] Berikut ini adalah beberapa opsi yang sering digunakan dalam perintah ls FreeBSD:\nOption Description\nls -a daftar semua berkas termasuk berkas tersembunyi yang dimulai dengan ‘.’. ls -d Melihat daftar direktori - dengan ’ */’. ls -l daftar dengan format panjang - tampilkan izin. ls -F Tambahkan indikator (salah satu dari */=\u003e@|) ke entri. ls -lh Perintah ini akan menunjukkan ukuran berkas dalam format yang dapat dibaca manusia. ls -r daftar dalam urutan terbalik. ls -i daftar nomor inode(indeks) berkas. ls -ltr Lihat Urutan Keluaran Terbalik menurut Tanggal. ls -t urutkan menurut waktu \u0026 tanggal. ls -n Digunakan untuk mencetak ID grup dan ID pemilik, bukan nama mereka. ls -m Daftar entri yang dipisahkan oleh koma harus mengisi lebar. ls -g Ini memungkinkan Anda untuk mengecualikan kolom informasi pemilik dan grup. ls -q Paksa pencetakan karakter non-grafik dalam nama berkas sebagai karakter `?’;. ls -Q Tempatkan tanda kutip ganda di sekitar nama entri.\nB. Contoh dasar perintah ls di FreeBSD Di sini, kita akan melihat contoh dasar perintah ls di lingkungan FreeBSDbeserta semua opsi yang tersedia.\n1. Perintah ’ls’ digunakan untuk mencantumkan berkas dan direktori Isi direktori kerja Anda saat ini, yang merupakan cara teknis untuk menyatakan direktori tempat terminal Anda berada saat ini, akan tercantum jika Anda menjalankan perintah \"ls\" tanpa opsi lebih lanjut.\nroot@ns4:/usr/local/etc # ls 2. Menampilkan berkas dan direktori tersembunyi Gunakan opsi -a dari perintah ls untuk menampilkan berkas dan direktori tersembunyi di direktori saat ini.\nroot@ns4:/usr/local/etc # ls -a File yang diawali dengan titik disembunyikan (.). Direktori saat ini (.) dan direktori induk (..) dapat anda lihat dengan perintah \"ls -a\".\n3. Menampilkan informasi lengkap tentang berkas Opsi \"ls -l\" menampilkan konten direktori saat ini dalam format daftar panjang, satu per baris. Baris diawali dengan izin berkas atau direktori, nama pemilik dan grup, ukuran berkas, tanggal dan waktu pembuatan/pengubahan, nama berkas/folder sebagai beberapa atribut.\nroot@ns4:/usr/local/etc # ls -l 4. Menampilkan Klasifikasikan berkas dengan karakter khusus Perintah ls mengkategorikan berkas menggunakan parameter -F. Ini menandakan, Direktori yang diakhiri dengan garis miring (/), Berkas yang dapat dieksekusi dengan tanda bintang (*), Tautan simbolik dengan simbol laju di belakangnya (@), FIFO dengan garis vertikal di belakangnya (|), dan Berkas biasa yang tidak berisi apa pun.\nroot@ns4:/usr/local/etc # ls -F 5. Menampilkan Nomor Indeks File Untuk keperluan internal, Anda mungkin perlu mengetahui nomor indeks suatu file. Untuk menampilkan nomor indeks, gunakan opsi \"ls -i\". Anda dapat menghapus file dengan karakter khusus dalam namanya dengan menggunakan nomor indeks.\nroot@ns4:/usr/local/etc # ls -i 6. Melihat berkas yang terakhir diedit Berkas yang terakhir dimodifikasi akan ditampilkan terlebih dahulu karena berkas diurutkan berdasarkan waktu modifikasi. Gunakan perintah ls dan head secara bersamaan untuk mengakses berkas yang terakhir diedit di direktori saat ini.\nroot@ns4:~ # ls -t root@ns4:~ # ls -t | head -1 7. Menampilkan Ukuran File dalam Format yang Dapat Dibaca Manusia Pilihan perintah ls lain yang sering digunakan adalah -h atau -human-readable dan -h harus digunakan dengan -l dan -s untuk mencetak ukuran seperti 1K 234M 2G, dsb. Ini akan menampilkan ukuran file dalam format yang dapat dibaca manusia, bukan byte.\nroot@ns4:~ # ls -lh total 113258 drwxr-xr-x 3 root wheel 3B Mar 9 01:29 .bundle drwxr-xr-x 6 root wheel 6B Mar 26 13:01 .cache drwxr-xr-x 3 root wheel 3B Mar 26 13:23 .config -rw-r--r-- 2 root wheel 1.1K Apr 13 12:41 .cshrc -rw-r--r-- 1 root wheel 114B Apr 17 21:14 .gitconfig drwxr-xr-x 3 root wheel 3B Apr 12 19:10 .ipython -rw-r--r-- 1 root wheel 66B Sep 12 2024 .k5login drwxr-xr-x 4 root wheel 4B Mar 14 00:34 .local -rw-r--r-- 1 root wheel 316B Sep 12 2024 .login drwxr-xr-x 3 root wheel 3B Apr 15 13:11 .m2 drwxr-xr-x 3 root wheel 3B Apr 13 09:14 .mono drwxr-xr-x 4 root wheel 5B Mar 20 22:10 .npm -rw-r--r-- 2 root wheel 592B Mar 26 16:44 .profile -rw------- 1 root wheel 0B Mar 23 12:49 .sh_history -rw-r--r-- 1 root wheel 1.1K Sep 12 2024 .shrc drwx------ 2 root wheel 6B Mar 9 23:32 .ssh drwxr-xr-x 3 root wheel 3B Mar 26 13:00 go drwxr-xr-x 5 root wheel 9B Apr 19 20:58 latihan -rw------- 1 root wheel 214M Apr 12 11:21 ldconfig.core Bila Anda menggunakan ls -lh, maka akan ditampilkan seluruh informasi mengenai nama berkas atau direktori, sedangkan bila Anda menggunakan ls -sh, maka akan ditampilkan hanya ukuran dan nama berkas atau direktori.\nroot@ns4:~ # ls -sh total 113258 1 .bundle 5 .gitconfig 5 .login 5 .profile 1 go 1 .cache 1 .ipython 1 .m2 1 .sh_history 9 latihan 1 .config 1 .k5login 1 .mono 5 .shrc 113213 ldconfig.core 5 .cshrc 1 .local 1 .npm 9 .ssh 8. Menampilkan Urutan Keluaran Terbalik Berdasarkan Tanggal Pada perintah di atas, argumen l digunakan untuk format daftar panjang, argumen t mengurutkan semua file dan direktori berdasarkan waktu modifikasi dan mencantumkan yang terbaru terlebih dahulu, dan argumen r digunakan untuk membalik urutan pengurutan.\nroot@ns4:~ # ls -ltr Akibatnya, perintah ls -ltr mencantumkan semua direktori dan nama file dengan mengurutkan tanggal yang dimodifikasi dalam urutan terbalik.\n9. Mencantumkan semua berkas dan direktori dalam urutan terbalik Opsi \"ls -r\" mencantumkan semua berkas dan direktori dalam urutan terbalik. Semua berkas dan direktori disusun dalam urutan abjad terbalik.\nroot@ns4:~ # ls -r 10. Menampilkan Daftar UID dan GID dari file dan direktori Perintah “ls -n” menampilkan UID (ID Pengguna) dan GID (ID Grup) dari setiap file dan direktori, satu per baris. Pengguna dan grup (UID dan GID) yang umum memiliki 1000, tetapi UID dan GID akar memiliki nol.\nroot@ns4:~ # ls -n 11. Mencantumkan berkas dan direktori yang dipisahkan dengan koma Perintah \"ls -m\" menampilkan semua berkas dan direktori yang dipisahkan dengan koma.\nroot@ns4:~ # ls -m 12. Mencantumkan semua berkas dan direktori tanpa detail pemilik Opsi \"ls -g\" mirip dengan opsi \"ls -l\", namun opsi -g melewatkan detail pemilik berkas dan direktori.\nroot@ns4:~ # ls -g 13. Menampilkan Subdirektori tanpa file lain Perintah \"ls -d */\" ini dapat digunakan untuk menampilkan hanya subdirektori dan menyembunyikan semua file lainnya.\nroot@ns4:~ # ls -d */ 14. Menampilkan halaman Bantuan perintah ls Dengan menggunakan \"ls --help\" ini, Anda dapat melihat panduan untuk perintah ls. Perintah ini memiliki lebih banyak opsi. Beberapa di antaranya diberikan di bawah ini sebagai referensi.\nroot@ns4:~ # man ls Dalam artikel ini, beberapa opsi untuk perintah ls dicantumkan di atas beserta contohnya. Ini adalah salah satu perintah paling sederhana di FreeBSD. Meskipun Anda familier dengan perintah ini, Anda mungkin tidak familier dengan semua keadaan yang ditentukan.\n",
+  "wordCount" : "1194",
+  "inLanguage": "en",
+  "datePublished": "2025-05-25T12:45:15+08:00",
+  "dateModified": "2025-05-25T12:45:15+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Iwan Setiawan"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WARNET DAPURNET",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" integrity="sha384-wcIxkf4k558AjM3Yz3BBFQUbk/zgIYC2R0QpeeYb+TwlBVMrlgLqwRjRtGZiK7ww" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js" integrity="sha384-hIoBPJpTUs74ddyc4bFZSM1TVlQDA60VBbJS0oA934VSz82sBx1X7kSx2ATBDIyd" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+            {left: "\\begin{equation*}", right: "\\end{equation*}", display: true},
+            {left: "\\begin{align}", right: "\\end{align}", display: true},
+            {left: "\\begin{align*}", right: "\\end{align*}", display: true},
+            {left: "\\begin{alignat}", right: "\\end{alignat}", display: true},
+            {left: "\\begin{gather}", right: "\\end{gather}", display: true},
+            {left: "\\begin{CD}", right: "\\end{CD}", display: true},
+          ],
+          throwOnError : false
+        });
+    });
+</script>
+ 
+
+
+</head>
+
+<body class="" id="top">
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="WARNET DAPURNET">
+                <img src="http://localhost:1313/favicon.ico" alt="" aria-label="logo"
+                    height="18"
+                    width="18">WARNET DAPURNET</a>
+            <div class="logo-switches">
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/dnsserver/" title="DNSServer">
+                    <span>DNSServer</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/webhttps/" title="WebHTTPS">
+                    <span>WebHTTPS</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/anonymous/" title="Anonymous">
+                    <span>Anonymous</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/database/" title="DataBase">
+                    <span>DataBase</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://unixwinbsd.site" title="Blog">
+                    <span>Blog</span>&nbsp;
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Cara Menggunakan Perintah ls di FreeBSD dengan Contoh
+    </h1>
+    <div class="post-meta"><span title='2025-05-25 12:45:15 +0800 +0800'>May 2025</span>&nbsp;&middot;&nbsp;Iwan Setiawan&nbsp;&middot;&nbsp;<a href="https://github.com/unixwinbsd/unixwinbsd.github.io" rel="noopener noreferrer" target="_blank">GitHub repository</a>
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-opsi-flags-perintah-ls-di-freebsd">A. Opsi (flags) Perintah ls di FreeBSD</a></li>
+    <li><a href="#b-contoh-dasar-perintah-ls-di-freebsd">B. Contoh dasar perintah ls di FreeBSD</a></li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Di FreeBSD, perintah <code>&quot;ls&quot;</code> merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls. Perintah ini dapat digunakan oleh pengguna biasa maupun administrator sistem.</p>
+<p>Kemampuan untuk melihat file apa saja yang ada di dalam direktori membuat ls begitu penting. Perintah ini akan sering digunakan untuk menampilkan isi direktori. Meskipun ini bukan perintah yang rumit, perintah ini dilengkapi dengan sejumlah opsi untuk mencantumkan file beserta informasi tambahan. Meskipun ls selalu cukup untuk mencantumkan isi, Anda mungkin akan menemukan beberapa opsi ini sangat berguna.</p>
+<h2 id="a-opsi-flags-perintah-ls-di-freebsd">A. Opsi (flags) Perintah ls di FreeBSD<a hidden class="anchor" aria-hidden="true" href="#a-opsi-flags-perintah-ls-di-freebsd">#</a></h2>
+<p>Perintah ls di FreeBSD, memiliki sintaks dasar sebagai berikut:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>ls [ Options ] [File]
+</span></span></code></pre></div><p>Berikut ini adalah beberapa opsi yang sering digunakan dalam perintah ls FreeBSD:</p>
+<p>Option    Description<br>
+ls -a        daftar semua berkas termasuk berkas tersembunyi yang dimulai dengan &lsquo;.&rsquo;.
+ls -d        Melihat daftar direktori - dengan &rsquo; */&rsquo;.
+ls -l        daftar dengan format panjang - tampilkan izin.
+ls -F        Tambahkan indikator (salah satu dari */=&gt;@|) ke entri.
+ls -lh        Perintah ini akan menunjukkan ukuran berkas dalam format yang dapat dibaca manusia.
+ls -r        daftar dalam urutan terbalik.
+ls -i        daftar nomor inode(indeks) berkas.
+ls -ltr        Lihat Urutan Keluaran Terbalik menurut Tanggal.
+ls -t        urutkan menurut waktu &amp; tanggal.
+ls -n        Digunakan untuk mencetak ID grup dan ID pemilik, bukan nama mereka.
+ls -m       Daftar entri yang dipisahkan oleh koma harus mengisi lebar.
+ls -g        Ini memungkinkan Anda untuk mengecualikan kolom informasi pemilik dan grup.
+ls -q        Paksa pencetakan karakter non-grafik dalam nama berkas sebagai karakter `?&rsquo;;. ls -Q Tempatkan tanda kutip ganda di sekitar nama entri.</p>
+<h2 id="b-contoh-dasar-perintah-ls-di-freebsd">B. Contoh dasar perintah ls di FreeBSD<a hidden class="anchor" aria-hidden="true" href="#b-contoh-dasar-perintah-ls-di-freebsd">#</a></h2>
+<p>Di sini, kita akan melihat contoh dasar perintah ls di lingkungan FreeBSDbeserta semua opsi yang tersedia.</p>
+<h3 id="1-perintah-ls-digunakan-untuk-mencantumkan-berkas-dan-direktori">1. Perintah &rsquo;ls&rsquo; digunakan untuk mencantumkan berkas dan direktori<a hidden class="anchor" aria-hidden="true" href="#1-perintah-ls-digunakan-untuk-mencantumkan-berkas-dan-direktori">#</a></h3>
+<p>Isi direktori kerja Anda saat ini, yang merupakan cara teknis untuk menyatakan direktori tempat terminal Anda berada saat ini, akan tercantum jika Anda menjalankan perintah <code>&quot;ls&quot;</code> tanpa opsi lebih lanjut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:/usr/local/etc # ls
+</span></span></span></code></pre></div><h3 id="2-menampilkan-berkas-dan-direktori-tersembunyi">2. Menampilkan berkas dan direktori tersembunyi<a hidden class="anchor" aria-hidden="true" href="#2-menampilkan-berkas-dan-direktori-tersembunyi">#</a></h3>
+<p>Gunakan opsi <code>-a</code> dari perintah <code>ls</code> untuk menampilkan berkas dan direktori tersembunyi di direktori saat ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:/usr/local/etc # ls -a
+</span></span></span></code></pre></div><p>File yang diawali dengan titik disembunyikan (.). Direktori saat ini (.) dan direktori induk (..) dapat anda lihat dengan perintah <code>&quot;ls -a&quot;</code>.</p>
+<h3 id="3-menampilkan-informasi-lengkap-tentang-berkas">3. Menampilkan informasi lengkap tentang berkas<a hidden class="anchor" aria-hidden="true" href="#3-menampilkan-informasi-lengkap-tentang-berkas">#</a></h3>
+<p>Opsi <code>&quot;ls -l&quot;</code> menampilkan konten direktori saat ini dalam format daftar panjang, satu per baris. Baris diawali dengan izin berkas atau direktori, nama pemilik dan grup, ukuran berkas, tanggal dan waktu pembuatan/pengubahan, nama berkas/folder sebagai beberapa atribut.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:/usr/local/etc # ls -l
+</span></span></span></code></pre></div><h3 id="4-menampilkan-klasifikasikan-berkas-dengan-karakter-khusus">4. Menampilkan Klasifikasikan berkas dengan karakter khusus<a hidden class="anchor" aria-hidden="true" href="#4-menampilkan-klasifikasikan-berkas-dengan-karakter-khusus">#</a></h3>
+<p>Perintah ls mengkategorikan berkas menggunakan parameter -F. Ini menandakan, Direktori yang diakhiri dengan garis miring (/), Berkas yang dapat dieksekusi dengan tanda bintang (*), Tautan simbolik dengan simbol laju di belakangnya (@), FIFO dengan garis vertikal di belakangnya (|), dan
+Berkas biasa yang tidak berisi apa pun.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:/usr/local/etc # ls -F
+</span></span></span></code></pre></div><h3 id="5-menampilkan-nomor-indeks-file">5. Menampilkan Nomor Indeks File<a hidden class="anchor" aria-hidden="true" href="#5-menampilkan-nomor-indeks-file">#</a></h3>
+<p>Untuk keperluan internal, Anda mungkin perlu mengetahui nomor indeks suatu file. Untuk menampilkan nomor indeks, gunakan opsi <code>&quot;ls -i&quot;</code>. Anda dapat menghapus file dengan karakter khusus dalam namanya dengan menggunakan nomor indeks.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:/usr/local/etc # ls -i
+</span></span></span></code></pre></div><h3 id="6-melihat-berkas-yang-terakhir-diedit">6. Melihat berkas yang terakhir diedit<a hidden class="anchor" aria-hidden="true" href="#6-melihat-berkas-yang-terakhir-diedit">#</a></h3>
+<p>Berkas yang terakhir dimodifikasi akan ditampilkan terlebih dahulu karena berkas diurutkan berdasarkan waktu modifikasi. Gunakan perintah ls dan head secara bersamaan untuk mengakses berkas yang terakhir diedit di direktori saat ini.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -t
+</span></span></span><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -t | head -1
+</span></span></span></code></pre></div><h3 id="7-menampilkan-ukuran-file-dalam-format-yang-dapat-dibaca-manusia">7. Menampilkan Ukuran File dalam Format yang Dapat Dibaca Manusia<a hidden class="anchor" aria-hidden="true" href="#7-menampilkan-ukuran-file-dalam-format-yang-dapat-dibaca-manusia">#</a></h3>
+<p>Pilihan perintah <code>ls</code> lain yang sering digunakan adalah <code>-h</code> atau <code>-human-readable</code> dan <code>-h</code> harus digunakan dengan <code>-l</code> dan <code>-s</code> untuk mencetak ukuran seperti 1K 234M 2G, dsb. Ini akan menampilkan ukuran file dalam format yang dapat dibaca manusia, bukan byte.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -lh
+</span></span></span><span style="display:flex;"><span><span style="color:#888">total 113258
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  3 root wheel    3B Mar  9 01:29 .bundle
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  6 root wheel    6B Mar 26 13:01 .cache
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  3 root wheel    3B Mar 26 13:23 .config
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-r--r--  2 root wheel  1.1K Apr 13 12:41 .cshrc
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-r--r--  1 root wheel  114B Apr 17 21:14 .gitconfig
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  3 root wheel    3B Apr 12 19:10 .ipython
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-r--r--  1 root wheel   66B Sep 12  2024 .k5login
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  4 root wheel    4B Mar 14 00:34 .local
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-r--r--  1 root wheel  316B Sep 12  2024 .login
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  3 root wheel    3B Apr 15 13:11 .m2
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  3 root wheel    3B Apr 13 09:14 .mono
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  4 root wheel    5B Mar 20 22:10 .npm
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-r--r--  2 root wheel  592B Mar 26 16:44 .profile
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-------  1 root wheel    0B Mar 23 12:49 .sh_history
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-r--r--  1 root wheel  1.1K Sep 12  2024 .shrc
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwx------  2 root wheel    6B Mar  9 23:32 .ssh
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  3 root wheel    3B Mar 26 13:00 go
+</span></span></span><span style="display:flex;"><span><span style="color:#888">drwxr-xr-x  5 root wheel    9B Apr 19 20:58 latihan
+</span></span></span><span style="display:flex;"><span><span style="color:#888">-rw-------  1 root wheel  214M Apr 12 11:21 ldconfig.core
+</span></span></span></code></pre></div><p>Bila Anda menggunakan <code>ls -lh</code>, maka akan ditampilkan seluruh informasi mengenai nama berkas atau direktori, sedangkan bila Anda menggunakan <code>ls -sh</code>, maka akan ditampilkan hanya ukuran dan nama berkas atau direktori.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -sh
+</span></span></span><span style="display:flex;"><span><span style="color:#888">total 113258
+</span></span></span><span style="display:flex;"><span><span style="color:#888">     1 .bundle               5 .gitconfig            5 .login                5 .profile              1 go
+</span></span></span><span style="display:flex;"><span><span style="color:#888">     1 .cache                1 .ipython              1 .m2                   1 .sh_history           9 latihan
+</span></span></span><span style="display:flex;"><span><span style="color:#888">     1 .config               1 .k5login              1 .mono                 5 .shrc            113213 ldconfig.core
+</span></span></span><span style="display:flex;"><span><span style="color:#888">     5 .cshrc                1 .local                1 .npm                  9 .ssh
+</span></span></span></code></pre></div><h3 id="8-menampilkan-urutan-keluaran-terbalik-berdasarkan-tanggal">8. Menampilkan Urutan Keluaran Terbalik Berdasarkan Tanggal<a hidden class="anchor" aria-hidden="true" href="#8-menampilkan-urutan-keluaran-terbalik-berdasarkan-tanggal">#</a></h3>
+<p>Pada perintah di atas, argumen <code>l</code> digunakan untuk format daftar panjang, argumen <code>t</code> mengurutkan semua file dan direktori berdasarkan waktu modifikasi dan mencantumkan yang terbaru terlebih dahulu, dan argumen <code>r</code> digunakan untuk membalik urutan pengurutan.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -ltr
+</span></span></span></code></pre></div><p>Akibatnya, perintah ls -ltr mencantumkan semua direktori dan nama file dengan mengurutkan tanggal yang dimodifikasi dalam urutan terbalik.</p>
+<h3 id="9-mencantumkan-semua-berkas-dan-direktori-dalam-urutan-terbalik">9. Mencantumkan semua berkas dan direktori dalam urutan terbalik<a hidden class="anchor" aria-hidden="true" href="#9-mencantumkan-semua-berkas-dan-direktori-dalam-urutan-terbalik">#</a></h3>
+<p>Opsi <code>&quot;ls -r&quot;</code> mencantumkan semua berkas dan direktori dalam urutan terbalik. Semua berkas dan direktori disusun dalam urutan abjad terbalik.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -r
+</span></span></span></code></pre></div><h3 id="10-menampilkan-daftar-uid-dan-gid-dari-file-dan-direktori">10. Menampilkan Daftar UID dan GID dari file dan direktori<a hidden class="anchor" aria-hidden="true" href="#10-menampilkan-daftar-uid-dan-gid-dari-file-dan-direktori">#</a></h3>
+<p>Perintah &ldquo;ls -n&rdquo; menampilkan UID (ID Pengguna) dan GID (ID Grup) dari setiap file dan direktori, satu per baris. Pengguna dan grup (UID dan GID) yang umum memiliki 1000, tetapi UID dan GID akar memiliki nol.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -n
+</span></span></span></code></pre></div><h3 id="11-mencantumkan-berkas-dan-direktori-yang-dipisahkan-dengan-koma">11. Mencantumkan berkas dan direktori yang dipisahkan dengan koma<a hidden class="anchor" aria-hidden="true" href="#11-mencantumkan-berkas-dan-direktori-yang-dipisahkan-dengan-koma">#</a></h3>
+<p>Perintah <code>&quot;ls -m&quot;</code> menampilkan semua berkas dan direktori yang dipisahkan dengan koma.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -m
+</span></span></span></code></pre></div><h3 id="12-mencantumkan-semua-berkas-dan-direktori-tanpa-detail-pemilik">12. Mencantumkan semua berkas dan direktori tanpa detail pemilik<a hidden class="anchor" aria-hidden="true" href="#12-mencantumkan-semua-berkas-dan-direktori-tanpa-detail-pemilik">#</a></h3>
+<p>Opsi <code>&quot;ls -g&quot;</code> mirip dengan opsi <code>&quot;ls -l&quot;</code>, namun opsi <code>-g</code> melewatkan detail pemilik berkas dan direktori.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -g
+</span></span></span></code></pre></div><h3 id="13-menampilkan-subdirektori-tanpa-file-lain">13. Menampilkan Subdirektori tanpa file lain<a hidden class="anchor" aria-hidden="true" href="#13-menampilkan-subdirektori-tanpa-file-lain">#</a></h3>
+<p>Perintah <code>&quot;ls -d */&quot;</code> ini dapat digunakan untuk menampilkan hanya subdirektori dan menyembunyikan semua file lainnya.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # ls -d */
+</span></span></span></code></pre></div><h3 id="14-menampilkan-halaman-bantuan-perintah-ls">14. Menampilkan halaman Bantuan perintah ls<a hidden class="anchor" aria-hidden="true" href="#14-menampilkan-halaman-bantuan-perintah-ls">#</a></h3>
+<p>Dengan menggunakan <code>&quot;ls --help&quot;</code> ini, Anda dapat melihat panduan untuk perintah <code>ls</code>. Perintah ini memiliki lebih banyak opsi. Beberapa di antaranya diberikan di bawah ini sebagai referensi.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-console" data-lang="console"><span style="display:flex;"><span><span style="color:#888">root@ns4:~ # man ls
+</span></span></span></code></pre></div><p>Dalam artikel ini, beberapa opsi untuk perintah ls dicantumkan di atas beserta contohnya. Ini adalah salah satu perintah paling sederhana di FreeBSD. Meskipun Anda familier dengan perintah ini, Anda mungkin tidak familier dengan semua keadaan yang ditentukan.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/webhttps/">WebHTTPS</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 WARNET DAPURNET</span> ·     
+    <span>
+    Powered by 
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">hugo</a>, <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">papermod</a>, &amp;
+        <a href="https://github.com/pmichaillat/hugo-website/" rel="noopener" target="_blank">hugo-website</a>.
+    </span>
+</footer>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+</html>

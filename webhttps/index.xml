@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data on WARNET DAPURNET</title>
+    <link>http://localhost:1313/webhttps/</link>
+    <description>Recent content in Data on WARNET DAPURNET</description>
+    <generator>Hugo -- 0.147.6</generator>
+    <language>id-ID</language>
+    <lastBuildDate>Sun, 25 May 2025 12:45:15 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/webhttps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cara Menggunakan Perintah ls di FreeBSD dengan Contoh</title>
+      <link>http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/</link>
+      <pubDate>Sun, 25 May 2025 12:45:15 +0800</pubDate>
+      <guid>http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/</guid>
+      <description>Di FreeBSD, perintah ls merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls</description>
+    </item>
+    <item>
+      <title>Memantau Aktivitas Server FreeBSD Dengan Perintah ps</title>
+      <link>http://localhost:1313/webhttps/2025-05-24-perintah-ps-freebsd/</link>
+      <pubDate>Sat, 24 May 2025 12:45:15 +0800</pubDate>
+      <guid>http://localhost:1313/webhttps/2025-05-24-perintah-ps-freebsd/</guid>
+      <description>Perintah ps digunakan untuk melihat proses yang sedang berjalan pada sistem operasi. Perintah ini sangat membantu seorang administrator sistem untuk mengetahui proses apa saja yang sedang berjalan dan apa saja yang dilakukan pada sistem operasi, berapa banyak memori yang digunakan, berapa banyak ruang CPU yang terisi, ID pengguna, nama perintah, dan lain sebagainya.</description>
+    </item>
+    <item>
+      <title>Mengatur Jalur Path ENV Di Freebsd untuk Composer Java and Go</title>
+      <link>http://localhost:1313/webhttps/2025-05-24-path-env-freebsd-java-go-composer/</link>
+      <pubDate>Sat, 24 May 2025 09:15:15 +0800</pubDate>
+      <guid>http://localhost:1313/webhttps/2025-05-24-path-env-freebsd-java-go-composer/</guid>
+      <description>Dalam Lingkungan, variabel perintah shell digunakan sebagai saluran utama untuk berinteraksi dengan variabel lingkungan dalam sistem operasi. Shell akan bertindak sebagai penerjemah baris perintah, yang mengeksekusi instruksi yang dimasukkan oleh pengguna.</description>
+    </item>
+    <item>
+      <title>Membuat Aplikasi Web dengan Google Go Lang Part 2</title>
+      <link>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/</link>
+      <pubDate>Fri, 23 May 2025 10:15:15 +0800</pubDate>
+      <guid>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/</guid>
+      <description>Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang</description>
+    </item>
+    <item>
+      <title>Membuat Aplikasi Web dengan Google Go Lang Part 1</title>
+      <link>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-1/</link>
+      <pubDate>Fri, 23 May 2025 07:57:45 +0800</pubDate>
+      <guid>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-1/</guid>
+      <description>Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang</description>
+    </item>
+  </channel>
+</rss>
