@@ -2,101 +2,108 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>WARNET DAPURNET</title>
-    <link>http://localhost:1313/</link>
+    <link>https://unixwinbsd.github.io/</link>
     <description>Recent content on WARNET DAPURNET</description>
     <generator>Hugo -- 0.147.6</generator>
     <language>id-ID</language>
     <lastBuildDate>Sun, 25 May 2025 12:45:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unixwinbsd.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cara Menggunakan Perintah ls di FreeBSD dengan Contoh</title>
-      <link>http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/</link>
+      <link>https://unixwinbsd.github.io/webhttps/2025-05-25-perintah-ls-freebsd/</link>
       <pubDate>Sun, 25 May 2025 12:45:15 +0800</pubDate>
-      <guid>http://localhost:1313/webhttps/2025-05-25-perintah-ls-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/webhttps/2025-05-25-perintah-ls-freebsd/</guid>
       <description>Di FreeBSD, perintah ls merupakan salah satu perintah yang paling umum digunakan. Perintah ini digunakan untuk menampilkan daftar file dan subdirektori di direktori saat ini. Jika Anda baru menggunakan baris perintah, perintah pertama yang harus Anda pelajari mungkin adalah ls</description>
     </item>
     <item>
       <title>Memantau Aktivitas Server FreeBSD Dengan Perintah ps</title>
-      <link>http://localhost:1313/webhttps/2025-05-24-perintah-ps-freebsd/</link>
+      <link>https://unixwinbsd.github.io/webhttps/2025-05-24-perintah-ps-freebsd/</link>
       <pubDate>Sat, 24 May 2025 12:45:15 +0800</pubDate>
-      <guid>http://localhost:1313/webhttps/2025-05-24-perintah-ps-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/webhttps/2025-05-24-perintah-ps-freebsd/</guid>
       <description>Perintah ps digunakan untuk melihat proses yang sedang berjalan pada sistem operasi. Perintah ini sangat membantu seorang administrator sistem untuk mengetahui proses apa saja yang sedang berjalan dan apa saja yang dilakukan pada sistem operasi, berapa banyak memori yang digunakan, berapa banyak ruang CPU yang terisi, ID pengguna, nama perintah, dan lain sebagainya.</description>
     </item>
     <item>
       <title>Menyiapkan Rideshare Dengan PostgreSQL Dan Ruby Rails di FreeBSD</title>
-      <link>http://localhost:1313/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</link>
+      <link>https://unixwinbsd.github.io/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</link>
       <pubDate>Sat, 24 May 2025 11:35:41 +0800</pubDate>
-      <guid>http://localhost:1313/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</guid>
       <description>Ruby on Rails atau yang biasa disebut Rails merupakan framework full-stack yang ditulis dalam bahasa pemrograman Ruby. Ruby on Rails atau RoR tersedia untuk beberapa sistem operasi seperti FreeBSD, Linux, Windows, dan Mac OS serta backend untuk membangun situs web statis</description>
     </item>
     <item>
       <title>Panduan Instalasi dan Konfigurasi GitLab Di FreeBSD</title>
-      <link>http://localhost:1313/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</link>
+      <link>https://unixwinbsd.github.io/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</link>
       <pubDate>Sat, 24 May 2025 11:15:15 +0800</pubDate>
-      <guid>http://localhost:1313/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</guid>
       <description>Untuk dapat menggunakan Git, saat ini tersedia berbagai layanan untuk menyimpan dan membagikan kode tersebut. Misalnya, GitLab, GitHub, Bitbucket, dan Gitorous. Di antara pilihan tersebut, GitLab merupakan salah satu layanan penyimpanan Git yang sedang naik daun dan memiliki banyak pengguna</description>
     </item>
     <item>
       <title>Mengatur Jalur Path ENV Di Freebsd untuk Composer Java and Go</title>
-      <link>http://localhost:1313/webhttps/2025-05-24-path-env-freebsd-java-go-composer/</link>
+      <link>https://unixwinbsd.github.io/webhttps/2025-05-24-path-env-freebsd-java-go-composer/</link>
       <pubDate>Sat, 24 May 2025 09:15:15 +0800</pubDate>
-      <guid>http://localhost:1313/webhttps/2025-05-24-path-env-freebsd-java-go-composer/</guid>
+      <guid>https://unixwinbsd.github.io/webhttps/2025-05-24-path-env-freebsd-java-go-composer/</guid>
       <description>Dalam Lingkungan, variabel perintah shell digunakan sebagai saluran utama untuk berinteraksi dengan variabel lingkungan dalam sistem operasi. Shell akan bertindak sebagai penerjemah baris perintah, yang mengeksekusi instruksi yang dimasukkan oleh pengguna.</description>
     </item>
     <item>
       <title>Tutorial FreeBSD - Panduan Instalasi PowerDNS</title>
-      <link>http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/</link>
+      <link>https://unixwinbsd.github.io/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/</link>
       <pubDate>Sat, 24 May 2025 08:57:45 +0800</pubDate>
-      <guid>http://localhost:1313/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/</guid>
+      <guid>https://unixwinbsd.github.io/dnsserver/2025-05-24-tutorial-freebsd-panduan-instalasi-powerdns/</guid>
       <description>Secara resmi PowerDNS terdiri dari Authoritative Server dan Recursor. PowerDNS merupakan DNS server yang ditulis dengan bahasa C&#43;&#43; dan berlisensi GPL. Anda dapat menggunakan kedua fungsi PowerDNS di atas atau salah satu saja</description>
     </item>
     <item>
       <title>Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD</title>
-      <link>http://localhost:1313/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</link>
+      <link>https://unixwinbsd.github.io/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</link>
       <pubDate>Sat, 24 May 2025 07:27:45 +0800</pubDate>
-      <guid>http://localhost:1313/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</guid>
       <description>PostgreSQL awalnya bernama POSTGRES, merujuk pada asal-usulnya sebagai penerus basis data Ingres. Program PostgreSQL juga dapat digunakan sebagai penyimpanan data utama atau gudang data untuk banyak aplikasi web, seluler, geospasial, dan analitis</description>
     </item>
     <item>
       <title>Membuat Aplikasi Web dengan Google Go Lang Part 2</title>
-      <link>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/</link>
+      <link>https://unixwinbsd.github.io/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/</link>
       <pubDate>Fri, 23 May 2025 10:15:15 +0800</pubDate>
-      <guid>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/</guid>
+      <guid>https://unixwinbsd.github.io/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-2/</guid>
       <description>Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang</description>
     </item>
     <item>
       <title>Membuat Aplikasi Web dengan Google Go Lang Part 1</title>
-      <link>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-1/</link>
+      <link>https://unixwinbsd.github.io/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-1/</link>
       <pubDate>Fri, 23 May 2025 07:57:45 +0800</pubDate>
-      <guid>http://localhost:1313/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-1/</guid>
+      <guid>https://unixwinbsd.github.io/webhttps/2025-05-23-membuat-aplikasi-web-google-go-lang-1/</guid>
       <description>Tutorial ini akan menjelaskan dan memandu Anda untuk membuat contoh praktis membangun aplikasi web dengan Go dan menggunakannya di jaringan internet sehingga dapat dibaca oleh banyak orang</description>
     </item>
     <item>
+      <title>Panduan Lengkap Penggunaan OpenSSL di FreeBSD</title>
+      <link>https://unixwinbsd.github.io/anonymous/2025-05-08-panduan-penggunaan-openssl-di-freebsd/</link>
+      <pubDate>Thu, 08 May 2025 10:35:41 +0800</pubDate>
+      <guid>https://unixwinbsd.github.io/anonymous/2025-05-08-panduan-penggunaan-openssl-di-freebsd/</guid>
+      <description>OpenSSL menyediakan alat yang diperlukan untuk membuat permintaan penandatanganan sertifikat, kunci server pribadi, dan sertifikat yang ditandatangani sendiri. Bila dikombinasikan dengan otoritas sertifikat yang diakui, sertifikat server tepercaya dapat dibuat untuk digunakan dengan protokol TCP seperti HTTP, SMTP, IMAP, dan sebagainya.</description>
+    </item>
+    <item>
       <title>GitLab Installation Guide on FreeBSD Server</title>
-      <link>http://localhost:1313/anonymous/2025-05-07-gitlab-installation-guide-freebsd-server/</link>
+      <link>https://unixwinbsd.github.io/anonymous/2025-05-07-gitlab-installation-guide-freebsd-server/</link>
       <pubDate>Wed, 07 May 2025 11:35:22 +0100</pubDate>
-      <guid>http://localhost:1313/anonymous/2025-05-07-gitlab-installation-guide-freebsd-server/</guid>
+      <guid>https://unixwinbsd.github.io/anonymous/2025-05-07-gitlab-installation-guide-freebsd-server/</guid>
       <description>&lt;p&gt;Gitlab is a service that provides remote access to Git repositories. In addition to being a place to store your code, this service also provides additional features designed to help manage the software development cycle. Git is a tool that functions to make it easier for developers. This tool is useful as a Version Control System (VCS) which is tasked with tracking changes to code files. For developers, the existence of Git makes it very easy for them to collaborate to complete projects with other developers or on their own projects.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gitlab Runner Di FreeBSD - Proses Instalasi dan Cara Penggunaannya</title>
-      <link>http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/</link>
+      <link>https://unixwinbsd.github.io/anonymous/2025-05-07-gitlab-runner-freebsd-installation/</link>
       <pubDate>Wed, 07 May 2025 11:35:41 +0800</pubDate>
-      <guid>http://localhost:1313/anonymous/2025-05-07-gitlab-runner-freebsd-installation/</guid>
+      <guid>https://unixwinbsd.github.io/anonymous/2025-05-07-gitlab-runner-freebsd-installation/</guid>
       <description>GitLab Runner adalah proyek sumber terbuka yang digunakan untuk menjalankan pekerjaan Anda dan mengirimkan hasilnya kembali ke GitLab. Proyek ini digunakan bersama dengan GitLab CI/CID, layanan integrasi berkelanjutan sumber terbuka yang disertakan dengan GitLab yang mengkoordinasikan pekerjaan</description>
     </item>
     <item>
       <title>Location</title>
-      <link>http://localhost:1313/location/</link>
+      <link>https://unixwinbsd.github.io/location/</link>
       <pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/location/</guid>
+      <guid>https://unixwinbsd.github.io/location/</guid>
       <description>Professor Dr von Igelfeld&amp;#39;s mailing and office addresses at the Institute of Romance Philology.</description>
     </item>
     <item>
       <title>Office Hours</title>
-      <link>http://localhost:1313/officehours/</link>
+      <link>https://unixwinbsd.github.io/officehours/</link>
       <pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/officehours/</guid>
+      <guid>https://unixwinbsd.github.io/officehours/</guid>
       <description>Schedule and location for Professor Dr von Igelfeld&amp;#39;s office hours.</description>
     </item>
   </channel>

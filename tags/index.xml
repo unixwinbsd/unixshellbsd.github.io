@@ -2,45 +2,45 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on WARNET DAPURNET</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://unixwinbsd.github.io/tags/</link>
     <description>Recent content in Tags on WARNET DAPURNET</description>
     <generator>Hugo -- 0.147.6</generator>
     <language>id-ID</language>
     <lastBuildDate>Sun, 25 May 2025 12:45:15 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unixwinbsd.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WebHTTPS</title>
-      <link>http://localhost:1313/tags/webhttps/</link>
+      <link>https://unixwinbsd.github.io/tags/webhttps/</link>
       <pubDate>Sun, 25 May 2025 12:45:15 +0800</pubDate>
-      <guid>http://localhost:1313/tags/webhttps/</guid>
+      <guid>https://unixwinbsd.github.io/tags/webhttps/</guid>
       <description></description>
     </item>
     <item>
       <title>DataBase</title>
-      <link>http://localhost:1313/tags/database/</link>
+      <link>https://unixwinbsd.github.io/tags/database/</link>
       <pubDate>Sat, 24 May 2025 11:35:41 +0800</pubDate>
-      <guid>http://localhost:1313/tags/database/</guid>
+      <guid>https://unixwinbsd.github.io/tags/database/</guid>
       <description></description>
     </item>
     <item>
       <title>DNSServer</title>
-      <link>http://localhost:1313/tags/dnsserver/</link>
+      <link>https://unixwinbsd.github.io/tags/dnsserver/</link>
       <pubDate>Sat, 24 May 2025 08:57:45 +0800</pubDate>
-      <guid>http://localhost:1313/tags/dnsserver/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>SysAdmin</title>
-      <link>http://localhost:1313/tags/sysadmin/</link>
-      <pubDate>Wed, 07 May 2025 11:35:22 +0100</pubDate>
-      <guid>http://localhost:1313/tags/sysadmin/</guid>
+      <guid>https://unixwinbsd.github.io/tags/dnsserver/</guid>
       <description></description>
     </item>
     <item>
       <title>Anonymous</title>
-      <link>http://localhost:1313/tags/anonymous/</link>
-      <pubDate>Wed, 07 May 2025 11:35:41 +0800</pubDate>
-      <guid>http://localhost:1313/tags/anonymous/</guid>
+      <link>https://unixwinbsd.github.io/tags/anonymous/</link>
+      <pubDate>Thu, 08 May 2025 10:35:41 +0800</pubDate>
+      <guid>https://unixwinbsd.github.io/tags/anonymous/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>SysAdmin</title>
+      <link>https://unixwinbsd.github.io/tags/sysadmin/</link>
+      <pubDate>Wed, 07 May 2025 11:35:22 +0100</pubDate>
+      <guid>https://unixwinbsd.github.io/tags/sysadmin/</guid>
       <description></description>
     </item>
   </channel>

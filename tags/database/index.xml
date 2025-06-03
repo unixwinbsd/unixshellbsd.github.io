@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>DataBase on WARNET DAPURNET</title>
-    <link>http://localhost:1313/tags/database/</link>
+    <link>https://unixwinbsd.github.io/tags/database/</link>
     <description>Recent content in DataBase on WARNET DAPURNET</description>
     <generator>Hugo -- 0.147.6</generator>
     <language>id-ID</language>
     <lastBuildDate>Sat, 24 May 2025 11:35:41 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unixwinbsd.github.io/tags/database/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Menyiapkan Rideshare Dengan PostgreSQL Dan Ruby Rails di FreeBSD</title>
-      <link>http://localhost:1313/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</link>
+      <link>https://unixwinbsd.github.io/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</link>
       <pubDate>Sat, 24 May 2025 11:35:41 +0800</pubDate>
-      <guid>http://localhost:1313/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/database/2025-05-24-rideshare-postgresql-ruby-rail-freebsd/</guid>
       <description>Ruby on Rails atau yang biasa disebut Rails merupakan framework full-stack yang ditulis dalam bahasa pemrograman Ruby. Ruby on Rails atau RoR tersedia untuk beberapa sistem operasi seperti FreeBSD, Linux, Windows, dan Mac OS serta backend untuk membangun situs web statis</description>
     </item>
     <item>
       <title>Panduan Instalasi dan Konfigurasi GitLab Di FreeBSD</title>
-      <link>http://localhost:1313/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</link>
+      <link>https://unixwinbsd.github.io/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</link>
       <pubDate>Sat, 24 May 2025 11:15:15 +0800</pubDate>
-      <guid>http://localhost:1313/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/database/2025-05-24-panduan-instalasi-konfigurasi-gitlab-freebsd/</guid>
       <description>Untuk dapat menggunakan Git, saat ini tersedia berbagai layanan untuk menyimpan dan membagikan kode tersebut. Misalnya, GitLab, GitHub, Bitbucket, dan Gitorous. Di antara pilihan tersebut, GitLab merupakan salah satu layanan penyimpanan Git yang sedang naik daun dan memiliki banyak pengguna</description>
     </item>
     <item>
       <title>Cara Menginstal dan Mengkonfigurasi PostgreSQL di FreeBSD</title>
-      <link>http://localhost:1313/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</link>
+      <link>https://unixwinbsd.github.io/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</link>
       <pubDate>Sat, 24 May 2025 07:27:45 +0800</pubDate>
-      <guid>http://localhost:1313/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</guid>
+      <guid>https://unixwinbsd.github.io/database/2025-05-24-instal-dan-konfigurasi-postgresql-freebsd/</guid>
       <description>PostgreSQL awalnya bernama POSTGRES, merujuk pada asal-usulnya sebagai penerus basis data Ingres. Program PostgreSQL juga dapat digunakan sebagai penyimpanan data utama atau gudang data untuk banyak aplikasi web, seluler, geospasial, dan analitis</description>
     </item>
   </channel>
