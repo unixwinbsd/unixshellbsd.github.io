@@ -1,5 +1,5 @@
 ---
-title: "Cara Menginstal Manajer Paket Python PIP di FreeBSD 14
+title: "Cara Menginstal Manajer Paket Python PIP di FreeBSD 14"
 date: 2025-05-26T07:25:15+08:00
 tags: ["WebHTTPS"]
 categories: ["FreeBSD"]
