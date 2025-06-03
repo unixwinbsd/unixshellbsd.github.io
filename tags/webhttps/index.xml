@@ -6,8 +6,15 @@
     <description>Recent content in WebHTTPS on WARNET DAPURNET</description>
     <generator>Hugo -- 0.147.6</generator>
     <language>id-ID</language>
-    <lastBuildDate>Sun, 25 May 2025 12:45:15 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 May 2025 07:25:15 +0800</lastBuildDate>
     <atom:link href="https://unixwinbsd.github.io/tags/webhttps/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cara Menginstal Manajer Paket Python PIP di FreeBSD 14</title>
+      <link>https://unixwinbsd.github.io/webhttps/2025-05-26-instal-python-pip-paket-manager-freebsd/</link>
+      <pubDate>Mon, 26 May 2025 07:25:15 +0800</pubDate>
+      <guid>https://unixwinbsd.github.io/webhttps/2025-05-26-instal-python-pip-paket-manager-freebsd/</guid>
+      <description>pip adalah pengelola paket untuk Python yang memungkinkan Anda menginstal pustaka dan paket tambahan yang bukan bagian dari pustaka Python standar seperti yang ditemukan dalam Indeks Paket Python</description>
+    </item>
     <item>
       <title>Cara Menggunakan Perintah ls di FreeBSD dengan Contoh</title>
       <link>https://unixwinbsd.github.io/webhttps/2025-05-25-perintah-ls-freebsd/</link>
