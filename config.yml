@@ -1,6 +1,6 @@
 baseurl: "https://unixwinbsd.github.io" 
 title: WARNET DAPURNET
-languageCode = "id-ID"
+languageCode: "id-ID"
 theme: PaperMod
 
 enableInlineShortcodes: true
